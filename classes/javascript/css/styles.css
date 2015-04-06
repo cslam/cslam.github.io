@@ -146,4 +146,8 @@ span.block-foot, span.fn-foot, span.obj-foot {
   main > ul > li, main > ol > li {
     margin-bottom: 1rem;
   }
+
+  code, .example {
+    font-weight: bold;
+  }
 }
