@@ -4,7 +4,7 @@ h1 { font-size: 2rem; }
 h2 { font-size: 1.5rem; }
 h3 { font-size: 1.17rem; }
 nav {
-  padding: 50px;
+  padding: 20px;
   position: fixed;
   left: 0;
   top: 0;
@@ -121,6 +121,9 @@ span.block-foot, span.fn-foot, span.obj-foot {
 }
 
 @media print {
+  nav {
+    display: none;
+  }
   html {
     font-size: 10px;
   }
