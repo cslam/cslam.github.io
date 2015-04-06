@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> JavaScript Objects </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">Objects</h1>      
+      <ul>
+        <li>
+          <p>An object contains values that are referenced by their unique property names.</p>
+        </li>
+        <li>
+          <p>These values can be basic data types (string, number, boolean, etc.), objects, and functions.</p>
+        </li>
+        <li>
+          <p>Objects can be used to model data structures that are more complex than the ones JavaScript provides by default.</p>
+          <div class="example">
+            <p>
+              <code class="obj">
+                <span class="comment">// A data type that represents a Vehicle:</span><br />
+                <span class="comment">// We are creating an object using literal notation, later we will learn how to use a constructor instead:</span><br />
+                <span class="obj-head">var myCar = {</span>
+                <span class="obj-body">currentSpeed: 0.0</span>
+                <span class="obj-foot">};</span>
+              </code>
+            </p>
+          </div>
+        </li>
+        
+        <li>
+          <p>To retrieve the value of an object's property, you get a reference to the object (e.g., a variable pointing to the object), and append dot or bracket notation after it:</p>
+          <div class="example">
+            <p><code><span class="comment">// Using dot notation:</span><br />
+              myCar.currentSpeed; <span class="comment">// returns the value of currentSpeed</span></code></p>
+            <p><code><span class="comment">// Using bracket notation: (the property name has to be in String format):</span><br />myCar["currentSpeed"]; <span class="comment">// returns the value of currentSpeed</span></code></p>
+            <p><code><span class="comment">// Using dot notation:</span><br />
+              myCar.currentSpeed = 50.0; <span class="comment">// sets the value of currentSpeed to 50.0</span></code></p>
+            <p><code><span class="comment">// Using bracket notation: (the property name has to be in String format):</span><br />myCar["currentSpeed"] = 50.0; <span class="comment">// sets the value of currentSpeed to 50.0</span></code></p>
+          </div>
+        </li>
+        
+        <li>
+          <p>Functions that are defined within an object are commonly known as <strong>methods</strong> of the object.</p>
+        </li>
+        
+        <li>
+          <p>Inside every method, you can use a special keyword called <code>this</code>. The <code>this</code> keyword will be the current object that this method is invoked on.</p>
+          <div class="example">
+            <p>
+              <code class="obj fn">
+                <span class="obj-head">var myCar = {</span>
+                <span class="obj-body">currentSpeed: 0.0,</span>
+                <span class="obj-body">
+                  <span class="fn-head">move: function () {</span>
+                  <span class="fn-body">this.currentSpeed = 20.0</span>
+                  <span class="fn-foot">}</span>
+                </span>
+                <span class="obj-foot">};</span>
+              </code>
+            </p>
+            <p><code>myCar.move(); <span class="comment">// invoke .move() on object myCar, that means the <i>this</i> keyword inside move will be the myCar object</span></code></p>
+          </div>
+        </li>
+      </ul>
+    
+    </main>
+  </body>
+</html>

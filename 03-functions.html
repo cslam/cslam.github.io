@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> JavaScript Functions </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">Functions</h1>      
+      
+      <ul>
+        <li>
+          <p> To create a function: </p>
+          <ol>
+            <li><p>Use the keyword <code>function</code>,</p> </li>
+            <li><p>Followed by an identifier (a name for the function),</p> </li>
+            <li><p>Followed by a pair of parentheses containing optional parameters separated by commas,</p></li>
+            <li><p>and finally, the function's body wrapped in a set of opened and closed curly braces: <code>{ }</code></p></li>
+          </ol>
+        </li>
+        <li>
+          <p>You should create a function if you want to save a group of statements (code) that performs a specific task. That way you can re-use that code by calling the function over and over again.</p>
+        </li>
+        <li>
+          <p>You define parameters for your function if it needs additional information from the caller of the function in order for the function to do its work.</p>
+        </li>
+        <li>
+          <p>You invoke a function by typing its name followed by a pair of parentheses. If the function defines parameter(s), you pass argument(s) inside those parentheses and make sure they match the order of the defined parameter(s).</p>
+        </li>
+        <li>
+          <p>Example:</p>
+          <div class="example">
+            <p><code class="fn">
+              <span class="comment">/*<br />
+                The name for this function is "area". <br />
+                It takes two parameters named "width" and "height" (Give your paremeters descriptive names).<br /> 
+                These parameter names act like variables and can be used only inside the function.<br />
+                */
+              </span>
+              <span class="fn-head">function area(width, height) {</span>
+              <span class="fn-body"> <span class="comment">// You can optionally return a value to the caller of the function using the "return" keyword.</span> </span>
+              <span class="fn-body">return width * height; </span>
+              <span class="fn-foot">}</span>
+              </code></p>
+            
+            <p>
+              <span class="js-comment">/*<br /> 
+                - To call (invoke) a function, you include the name of the function followed by a set of parentheses.<br />
+                - You <strong>should</strong> pass as many arguments as there are parameters defined for that function.<br />
+                - If the function returns a value, you usually would want to save that value to a variable.<br />
+                */
+              </span>
+            </p>
+            <p>
+              <code>var areaOfSquare = area(5, 5); <span class="comment">// areaOfSquare contains the value 25</span></code>
+            </p>
+            <p>
+              <code>var anotherArea = area(10, 20); <span class="comment">// anotherArea contains the value 200</span></code>
+            </p>
+          </div>
+        </li>
+        
+        <li>
+          <p>You can pass a function as an argument to another function by using the name of the function as the argument. This essentially means that a function can be stored in a variable.</p>
+          <div class="example">
+            <p>
+              <code class="fn">
+                <span class="fn-head">function area(width, height) {</span>
+                <span class="fn-body">return width * height;</span>
+                <span class="fn-foot">}</span>
+              </code>
+            </p>
+            <p>
+              <code class="fn">
+                <span class="fn-head">function perimeter(width, height) {</span>
+                <span class="fn-body">return width * 2 + height * 2;</span>
+                <span class="fn-foot">}</span>
+              </code>
+            </p>
+            <p>
+              <code class="fn">
+                <span class="fn-head">function calculate(operation) {</span>
+                <span class="fn-body"><span class="comment">// operation is a variable pointing to a function that's passed in by the caller of the function</span></span>
+                <span class="fn-body">var width = 50;</span>
+                <span class="fn-body">var height = 50;</span>
+                <span class="fn-body">var result = operation(width, height); <span class="comment">// invoke the passed in function</span></span>
+                <span class="fn-body">return result;</span>
+                <span class="fn-foot">}</span>
+              </code>
+            </p>
+            <p><code>var a = calculate(area); <span class="comment">// pass in area function as argument. notice we are not invoking area function at this point.</span></code> </p>
+            <p><code>var p = calculate(perimeter); <span class="comment">// pass in perimeter function as argument</span></code> </p>
+          </div>
+        </li>
+        
+        <li>
+          <p>You can return a function from within another function.</p>
+          <div class="example">
+            <p><code>var add100To;</code></p>
+            <p>
+              <code class="block">
+                <span class="block-head">function addBy(amount) {</span>
+                <span class="block-body"><span class="comment">// We can nest a function within another function</span></span>
+                <span class="block-body">function add(num) {</span>
+                <span class="block-body-body">return num + amount;</span>
+                <span class="block-body">}</span>
+                <span class="block-body">return add;</span>
+                <span class="block-foot">}</span>
+              </code>
+            </p>
+            <p><code>add100To = addBy(100); <span class="comment">// add100To points to the "add" function</span></code></p>
+            <p><code>var sum = add100To(6); <span class="comment">// sum is 106</span></code> </p>
+            <p><code>var anotherSum = add100To(25); <span class="comment">// anotherSum is 125</span></code> </p>
+          </div>
+        </li>
+        
+        <li>
+          <h3>Anonymous functions</h3>
+          <ul>
+            <li><p>Anonymous functions are functions with no names (or identifiers).</p></li>
+            <li>
+              <p>You can store an anonymous function using a variable and invoke the function by appending a pair of parentheses after the variable:</p>
+              <div class="example">
+                <p>
+                  <code class="fn">
+                    <span class="fn-head">var area = function (width, height) { <span class="comment">// area is now a function</span></span>
+                    <span class="fn-body">return width * height;</span>
+                    <span class="fn-foot">};</span>
+                  </code></p>
+                <p><code>var size = area(4, 5); <span class="comment">// size will be 20</span></code></p>
+              </div>
+            </li>
+            <li>
+              <p>You can invoke an anonymous function by wrapping it with a pair of parentheses, and then adding another pair of parentheses after it. This is called an <strong>Immediately Invoked Function Expression (IIFE)</strong>:</p>
+              <div class="example">
+                <p>
+                  <code class="fn">
+                    <span class="comment">// area is now a number</span>
+                    <span class="fn-head">var area = <strong class="attention">(</strong>function () {</span>
+                    <span class="fn-body">var width = 4;</span>
+                    <span class="fn-body">var height = 5;</span>
+                    <span class="fn-body">return width * height;</span>
+                    <span class="fn-foot">}<strong class="attention">)</strong>();</span>
+                  </code>
+                </p>
+              </div>
+            </li>
+            <li>
+              <p>You can define parameters for an IIFE, just make sure you pass the proper arguments to the IIFE when invoking it: </p>
+              <div class="example">
+                <p>
+                  <code class="fn">
+                    <span class="comment">// area contains the number 40</span>
+                    <span class="fn-head">var area = <strong class="attention">(</strong>function (width, height) {</span>
+                    <span class="fn-body">return width * height;</span>
+                    <span class="fn-foot">}<strong class="attention">)</strong>(4, 10); <span class="comment">// passing two arguments to this IIFE.</span></span> 
+                  </code>
+                </p>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li><p>More information on functions can be at the following URL: <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions</a></p></li>
+      </ul>
+    
+    </main>
+  </body>
+</html>

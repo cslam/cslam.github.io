@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> Events </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">Events</h1>      
+      
+      <ul>
+        <li><p>Events are fired when something happens on a web page. It could be when a user clicks on a button, or when a form is submitted, or when the DOM tree has been fully loaded.</p></li>
+        <li>
+          <p>There are many types of events. To listen for an event you will need to know:</p>
+          <ul>
+            <li><p>what is the name of the event.</p></li>
+            <li><p>when and how this event will be triggered.</p></li>
+          </ul>
+          <p>Once you know which event to listen for, you then write an event handler (a function) and attach it to the event. When the event is fired, the event handler will run.</p>
+        </li>
+        <li>
+          <p>Here is a comprehensive list of event names, and when they are fired: <a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank">https://developer.mozilla.org/en-US/docs/Web/Events</a></p>
+        </li>
+        <li>
+          <h2>To add an event handler for an event, use the method <code>.addEventListener()</code></h2>
+          <p><code><i>target</i>.addEventListener(eventName, eventHandler, useCapturing)</code></p>
+          <ul>
+            <li><p><strong>target</strong>: this is the event target, the target is capable of receiving events. In web pages, this can be a HTML element, the <code>document</code> object, the <code>window</code> object, or any other object that supports events.</p></li>
+            <li><p><strong>eventName</strong>: this is the name of the event (in String format) you want the target to listen for.</p></li>
+            <li><p><strong>eventHandler</strong>: this is the function that you want to run when the target receives the event.</p></li>
+            <li><p><strong>useCapturing</strong>: takes a Boolean value to indicate whether you want to use <em>event capturing</em> or <em>event bubbling</em>. Almost all the time you want to use <em>event bubbling</em>, so provide a <code>false</code> value.</p></li>
+          </ul>
+        </li>
+        <li>
+          <h2>Event Propagation: Capturing vs Bubbling</h2>
+          <p><em>Event Capturing</em> is when the event doesn't first fire at the intended target, but instead it fires at the top-most level of the DOM tree and then trickles down the target's ancestors and eventually to the intended target. So if you also added an event listener to the target's ancestors and both targets use event capturing, the ancestor will receive the event before the intended target.</p><p><strong>Older versions of IE do not support event capturing!</strong></p>
+        </li>
+        <li><p><em>Event Bubbling</em> is the popular mode of event propagation since all major browsers support it. It is the opposite of event capturing, which means the target of the event will receive the event before its ancestors do.</p></li>
+        <li><p>You can get more information on the two modes of event propagation: <a target="_blank" href="http://www.quirksmode.org/js/events_order.html#link4">http://www.quirksmode.org/js/events_order.html#link4</a></p></li>
+        
+        <li>
+          <h2>Internet Explorer 8 and older versions</h2>
+          <p>To add an event handler for an event on Internet Explorer 8 and older, you'll have to use the <code>.attachEvent()</code> method.</p>
+          <p>Go to the following URL to see how it is used: <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Legacy_Internet_Explorer_and_attachEvent">https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Legacy_Internet_Explorer_and_attachEvent</a></p>
+        </li>
+        <li>
+          <h2>Event Handlers and the event object</h2>
+          <ul>
+            <li><p>Event handlers are functions you provide to <code>.addEventListener()</code> that will be invoked when the event has been fired.</p></li>
+            <li><p>When an event handler is invoked, it will receive an <code>event</code> object as its first argument. The <code>event</code> object provides properties that will give us more information about the event:</p>
+              <div class="example">
+                <p>
+                  <code class="block">
+                    <span class="block-head">function handleClick(event) {</span>
+                    <span class="block-body">event.type; <span class="comment">// returns the name of the event, in this case, "click"</span></span>
+                    <span class="block-body">event.target; <span class="comment">// returns the target to which the event actually happened on.</span></span>
+                    <span class="block-body"><span class="comment">// Go do something...</span></span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p>
+                  <code>var lnk = document.getElementsByTagName('a')[0]; <span class="comment">// Get the first &lt;a&gt; element; we are assuming there is at least one. If none, the next line of code will create an error for your script. NOT GOOD!</span></code>
+                </p>
+                <p>
+                  <code>lnk.addEventListener('click', handleClick, false);</code>
+                </p>
+              </div>
+            </li>
+            <li><p>When using <code>.addEventListener()</code> to add an event handler, you can use the <code>this</code> keyword inside the event handler to refer to the target that the event handler is attached to. Be careful though, if you invoke the event handler yourself (e.g., handleClick();), the <code>this</code> keyword will not be pointing to the target, instead it will be pointing to the global object, <code>window</code>.</p></li>
+          </ul>
+        </li>
+        <li>
+          <h2>An older way to attach events to a target:</h2>
+          <div class="example">
+            <p><code>var lnk = document.getElementById('my-link');</code></p>
+            <p><code class="block">
+              <span class="block-head">lnk.onclick = function (evt) {</span>
+              <span class="block-body"><span class="comment">// "click" event happened: respond to it... </span></span>
+              <span class="block-foot">};</span>
+              </code></p>
+          </div>
+          <p>This method is not ideal because:</p>
+          <ol>
+            <li><p>You can only attach one event handler to the target.</p></li>
+            <li><p>Older versions of Internet Explorer do not pass an event object as an argument to the event handler. You have to get the event object from the <code>window.event</code> property. To "normalize" the event object, you can use short-circuiting with the logical OR operator inside the event handler:</p>
+          <p><code>evt = evt || window.event;</code></p></li>
+          </ol>
+        </li>
+        <li><h2>Some popular events to listen for:</h2>
+          <ul>
+            <li><p><code>window</code>'s <strong>load</strong> event: fires when the entire page has been loaded which means it waits for all images, subframes, stylesheets to be loaded.</p></li>
+            <li><p>an image element's <strong>load</strong> event: fires when an image has been downloaded.</p></li>
+            <li><p><code>document</code>'s <strong>DOMContentLoaded</strong> event: fires when DOM tree is fully constructed without waiting for images, subframe to finish loading. This is the event you usually listen for when you want to start working with the elements on the page at the earliest opportunity possible.</p></li>
+            <li><p>the <strong>click</strong> event: fires when user has clicked a mouse button on an element on the page.</p></li>
+            <li><p>the <strong>mousemove</strong> event: fires when user has moved the mouse over an element on the page.</p></li>
+            <li><p>the <strong>mouseover</strong> event: fires when user has moved the mouse onto an element on the page.</p></li>
+            <li><p>the <strong>mouseout</strong> event: fires when user has moved the mouse off an element on the page.</p></li>
+          </ul>
+        </li>
+      </ul>    
+    </main>
+  </body>
+</html>

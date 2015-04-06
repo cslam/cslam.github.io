@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> Type Coercion </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">Type Coercion</h1>
+      
+      <ul>
+        <li>
+          <p>Sometimes when an operation happens on incompatible data types (e.g., "100" + 2), JavaScript will try to do <strong>type coercion</strong> on the values. This means JavaScript will attempt to, behind the scenes, convert the operands to be the same data type (e.g., 2 to a "2") so that operation could succeed.</p>
+        </li>
+        <li>
+          <p>Type Coercion examples:</p>
+          <div class="example">
+            <p><code>"100" + 2; <span class="comment">// 2 becomes a "2", result is "1002"</span></code></p>
+            <p><code>+"100"; <span class="comment">// evaluates to 100, a number type</span></code></p>
+            <p><code>var greeting = "hello";</code></p>
+            <p><code>!greeting; <span class="comment">// since greeting is "truthy", this will evaluate to false</span></code></p>
+            <p><code>!!greeting; <span class="comment">// what would this expression evaluate to?</span></code></p>
+          </div>
+        </li>
+        
+        <li>
+          <p>One type of <strong>type coercion</strong> that is important to know is that <strong>all</strong> values can be treated as either a <strong>truthy</strong> or <strong>falsy</strong> value.</p>  
+        </li>
+        
+        <li><p>Falsy values are treated as if they are false when used in a logical context. (e.g., <code>if</code> statements, <code>&amp;&amp;</code>, and <code>||</code>)</p></li>
+          
+        <li><p>Truthy values are treated as if they are true when used in a logical context.</p></li>
+        <li><p>The following values are considered falsy:</p>
+          <ol>
+            <li><p><code>false</code></p></li>
+            <li><p><code>0</code> (zero)</p></li>
+            <li><p><code>""</code> (an empty string)</p></li>
+            <li><p><code>null</code></p></li>
+            <li><p><code>undefined</code></p></li>
+            <li><p><code>NaN</code> (a special Number value, stands for Not-A-Number)</p></li>
+          </ol>
+        </li>
+        <li><p>Any value that is not falsy is considered truthy.</p></li>
+        
+        <li>
+          <h2>Short circuit using <code>&amp;&amp;</code> and <code>||</code></h2>
+          <ul>
+            <li><p>We learned that logical operators can take boolean (<code>true</code>, <code>false</code>) operands.</p></li>
+            <li><p>Logical operators actually can take any value as operands. These values, behind the scenes, are treated as either truthy or falsy in order for the logical operators to work correctly.</p>
+              <div class="example">
+                <p><code>var foo = { }; <span class="comment">// an object</span></code></p>
+                <p><code>var bar = [1, 2, 3]; <span class="comment">// an array</span></code></p>
+                <p><code>foo &amp;&amp; bar; <span class="comment">// valid syntax</span></code></p>
+                <p><code>foo || bar; <span class="comment">// valid syntax</span></code></p>
+              </div>
+            </li>
+            <li><p>Logical operators process their operands from left to right.  They will stop processing once the final result can be determined. Therefore, it's possible that not all operands will be processed.  This is known as <strong>short-circuiting</strong>.</p></li>
+            <li><p>This means the AND operator will short-circuit when it processes a <strong>falsy</strong> value.</p></li>
+            <li><p>This means the OR operator will short-circuit when it processes a <strong>truthy</strong> value.</p></li>
+            <li>
+              <p>Also, AND and OR operators will return the last value (operand) that was processed.</p>
+              <div class="example">
+                <p><code>var foo = true || false; <span class="comment">// the OR operator stops after it processed the true value, and returns it. Variable foo will store that true value.</span></code></p>
+                <p><code>var bar = false &amp;&amp; true; <span class="comment">// the AND operator stops after it processed the false value, and returns it. Variable bar will store that false value.</span></code></p>
+                <p><code>var obj = null || { }; <span class="comment">// the OR operator stops after it processed the object literal, and returns it. Variable obj will store that object literal.</span></code></p>
+                <p><code>var anotherObj = null &amp;&amp; { }; <span class="comment">// the AND operator stops after it processed the null value, and returns it. Variable anotherObj will store that null value.</span></code></p>
+              </div>
+            </li>
+            <li>Short-circuit works well when setting default values for a function's parameters:
+              <div class="example">
+                <p>
+                  <code class="fn">
+                    <span class="fn-head">function createVehicle(numberOfWheels) {</span>
+                    <span class="fn-body">numberOfWheels = numberOfWheels || 4; <span class="comment">// if caller provides a falsy value (which includes 0), then 4 will be used as the default value</span></span>
+                    <span class="fn-body">return { numberOfWheels: numberOfWheels };</span>
+                    <span class="fn-foot">}</span>
+                  </code>                  
+                </p>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li><p>More information on short circuiting can be found at the following URL: <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators</a></p></li>
+      </ul>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> JavaScript Constructors </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">Object Constructors</h1>      
+      <ul>
+        <li>
+          <p>An object constructor provides a template for creating objects of the same type. It uses a <strong>function</strong> for creating the template.</p>
+        </li>
+        <li>
+          <p>To create an object from a constructor function, you insert the keyword <code>new</code> before the constructor function invocation:</p>
+          <div class="example">
+            <p><code><span class="comment">// The name used for a constructor function should be in camel-cased format with the first letter capitalized.</span></code></p>
+            <p>
+              <code class="fn">
+                <span class="fn-head">function Vehicle(speed) {</span>
+                <span class="fn-body">
+                  <span class="comment">// Inside a constructor, the keyword "this" refers to the newly created instance created by the "new" keyword.</span>
+                </span><br />
+                <span class="fn-body">
+                  <span class="comment">// You add properties to the instance by using the "this" object inside the constructor: any instances of Vehicle will now have a currentSpeed property.</span>
+                </span>
+                <span class="fn-body">this.currentSpeed = speed || 0;</span>
+                <span class="fn-foot">}</span>
+              </code>
+            </p>
+            <p><code>var myCar = new Vehicle(); <span class="comment">// myCar is an instance (object) of type Vehicle</span></code></p>
+            <p><code>var anotherCar = new Vehicle(5); <span class="comment">// anotherCar is also an instance of type Vehicle</span></code></p>
+            <p><code>myCar.currentSpeed; <span class="comment">// evaluates to 0</span></code></p>
+            <p><code>anotherCar.currentSpeed; <span class="comment">// evaluates to 5</span></code></p>
+          </div>
+        </li>
+        <li>
+          <h3>Instance methods</h3>
+          <ul>
+            <li><p>You can add methods (functions) to a constructor and all instances creatd by the constructor will have access to those methods. The most common way to do this is to add the methods to the constructor's <code>.prototype</code> property:</p>
+            <div class="example">
+              <p>
+                <code class="block">
+                  <span class="block-head">function Vehicle(speed) {</span>
+                  <span class="block-body">this.currentSpeed = speed || 0;</span>
+                  <span class="block-foot">}</span>
+                </code>
+              </p>
+
+              <p><span class="js-comment">// Adding a method called description to the constructor:</span></p>
+              <p><code class="block">
+                <span class="block-head">Vehicle.prototype.description = function () {</span>
+                <span class="block-body">return "The current speed is: " + this.currentSpeed;</span>
+                <span class="block-foot">}</span>
+              </code></p>
+              <p><code>var myCar = new Vehicle(); <span class="comment">// myCar is an instance (object) of type Vehicle</span></code></p>
+              <p><code>var anotherCar = new Vehicle(5); <span class="comment">// anotherCar is also an instance of type Vehicle</span></code></p>
+              <p><code>myCar.description(); <span class="comment">// evaluates to "The current speed is: 0"</span></code></p>
+              <p><code>anotherCar.description(); <span class="comment">// evaluates to "The current speed is: 5"</span></code></p>
+            </div>
+            
+            </li>
+          </ul>
+        </li>
+      </ul>
+    
+    </main>
+  </body>
+</html>

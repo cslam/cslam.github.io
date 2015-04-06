@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> JavaScript Basics </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">JavaScript Basics</h1>
+      
+      <ul>
+        <li>
+          <h2>Data Types</h2>
+          <ol>
+            <li><p>Boolean: <code>true, false</code></p></li>
+            <li><p>Null: <code>null</code></p></li>
+            <li><p>Undefined: <code>undefined</code></p></li>
+            <li><p>Number: <code>100, 0.5, 1e3, 0xffffff</code>, etc.</p></li>
+            <li><p>String: characters surrounded by single or double quotes: <code>"15 dollars", 'some random text'</code>, etc. </p></li>
+            <li><p>Object: <code>{name: "Chris", age: 55}, [1, 2, 3]</code>, etc.</p></li>
+          </ol>
+        </li>
+        
+        <li>
+          <h2>Variables</h2>
+          <ul>
+            <li><p>A variable stores a value of a certain data type which can then be retrieved by using the name of the variable.</p></li>
+            <li><p>To declare a variable use the keyword <code>var</code> followed by a name for the variable.</p></li>
+            <li><p>The name of the variable is called the <em>identifier</em>. A JavaScript identifier must start with a letter, underscore (_), or dollar sign ($); subsequent characters can contain the aforementioned characters along with digits (0-9).</p></li>
+            <li><p>Variable names are case-sensitive.</p></li>
+            <li>
+              <p>Declare a variable and give it a name called <span class="syntax">sum</span>:</p>
+              <div class="example"><code>var sum;</code></div>
+            </li>
+            <li>
+              <p>Store a value to a variable using the assignment symbol <code>=</code>:</p>
+              <div class="example">
+                <p><code>var sum = 100; <span class="comment">// declare and assign a value to the sum variable.</span></code></p>
+                <p><code>sum = 10; <span class="comment">// assign a different value to the sum variable.</span></code></p>
+                <p><code>var anotherSum = sum; <span class="comment">// declare a new variable and assign sum's value to it.</span></code></p>
+              </div>
+            </li>
+            <li>
+              <p>The following two ways for declaring variables are the same:</p>
+              <div class="example">
+                <p><span class="js-comment">// Each variable separated by semicolon</span></p>
+                <p><code>var i;</code></p>
+                <p><code>var j;</code></p>
+                <p><code>var k;</code></p>
+                
+                <p><span class="js-comment">// Each variable separated by comma with a semicolon after the final variable.</span></p>
+                <p><code>var i, j , k;</code></p>
+              </div>
+            </li>
+            <li><p>You can assign a value to a variable without declaring <code>var</code> first on the variable name, BUT you should never do that. This will cause the variable to be accessible in the global scope. <strong>Always use <code>var</code> to declare your variables.</strong></p></li>
+          </ul>
+        </li>
+      
+        <li>
+          <h2>Operators</h2>
+          <ul>
+            <li>
+              <h3>Assignment</h3>
+              <p><code>=</code>: takes the expression (or value) to the <strong>right</strong> of the operator and stores it in the variable to the <strong>left</strong> of the operator.</p>
+            </li>
+            <li>
+              <h3>Arithmetic operators:</h3>
+              <p><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>: add, subtract, multiply, divide, and modulo (like divide, but returns the remainder only).</p>
+              <p><code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>: these are shorthand for 1) performing a mathematical operation on a variable <strong>and</strong> 2) assigning the result to that same variable.</p>
+              <div class="example">
+                <p> <code>var num = 10;</code></p>
+                <p> <code>num += 50; <span class="comment">// num = num + 50 which will make num to be 60</span></code> </p>
+              </div>
+              <p><code>++</code>, <code>--</code>: place it <strong>before</strong> or <strong>after</strong> a variable that is of a number type, and it will increment (++) or decrement (--) the number by 1 and then store that new value back to the variable. What's the significance of placing it before or after the variable?</p>
+              <div class="example">
+                <p><code>var num = 100;</code></p>
+                <p><code>var anotherNum = ++num; <span class="comment">// num and anotherNum are now 101</span></code></p>
+                <p><code>var otherNum = num++; <span class="comment">// otherNum is 101, num is now 102</span></code></p>
+              </div>
+              <p><code>-</code>: the negation operator is a unary operator because it takes only one operand. It returns the negation of the operand.</p>
+              <div class="example">
+                <p><code>var num = 100;</code></p>
+                <p><code>var anotherNum = -num; <span class="comment">// anotherNum contains the number -100</span></code></p>
+              </div>
+            </li>
+            <li>
+              <h3>String operators:</h3>
+              <p><code>+</code>: concatenates (combines) two strings.</p>
+              <div class="example">
+                <p><code>var greeting = "Hello" + " " + "Chris"; <span class="comment">// final string: "Hello Chris"</span></code></p>
+                <p><code>var numString = "100" + 2; <span class="comment">// final string: "1002", the number turns to a string.</span></code></p>
+              </div>
+              <p><code>+=</code>: concatentates a string to a variable of string type and assigns the result to the variable.</p>
+              <div class="example">
+                <p><code>var greeting = "Hello ";</code></p>
+                <p><code>greeting += "Chris"; <span class="comment">// greeting now contains the string value "Hello Chris"</span></code></p>
+              </div>
+            </li>
+            <li>
+              <h3>Comparison operators:</h3>
+              <p><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>,  <code>===</code>, <code>!==</code>: less than, less than or equal, greater than, greater than or equal, strict equality, strict inequality.</p>
+              <p>These operators take two operands, one on the left and another on the right side of the operator.</p>
+              <p>The comparison operators will evaluate to a Boolean value of either <code>true</code> or <code>false</code>.</p>
+              <p><code>===</code> is the strict equality operator. It asks: is left hand operand equal to right hand operand?</p>
+              <p><code>!==</code> is the strict inequality operator. It asks: is left hand operand NOT equal to right hand operand?</p>
+              <p>There are <code>==</code>, and <code>!=</code> equality and inequality operators, but in certain situations, they can give unexpected results. Use the safer versions, (<code>===</code> and <code>!==</code>), instead.</p>
+              
+              <div class="example">
+                <p><code>var x = 10 &lt; 100; <span class="comment">// variable x will contain the Boolean value of true</span></code></p>
+                <p><code>var y = "10" &lt; "2"; <span class="comment">// strings are compared lexicographically (dictionary order). This example will evaluate to true, not false.</span></code></p>
+                <p><code>"hello" === "hello"; <span class="comment">// returns true</span></code></p>
+                <p><code>100 !== 6; <span class="comment">// returns true</span></code></p>
+              </div>
+            </li>
+            
+            <li>
+              <h3>Logical operators:</h3>
+              <ul>
+                <li>
+                  <p><code>&amp;&amp;</code>: logical AND accepts two boolean operands, if both operands are true then <code>&amp;&amp;</code> returns true, else it returns false.</p>
+                </li>
+                <li>
+                  <p><code>||</code>: logical OR accepts two boolean operands, if both operands are false then the <code>||</code> returns false, else it returns true.</p>
+
+                  <div class="example">
+                    <p><code>(10 &lt; 100) &amp;&amp; (10 &gt; -5); <span class="comment">// true AND true evaluates to true</span></code> </p>
+                    <p><code>(10 &lt; 100) &amp;&amp; (10 &lt; -5); <span class="comment">// true AND false evaluates to false</span></code> </p>
+                    <p><code>(10 &lt; 100) || (10 &lt; -5); <span class="comment">// true OR false evaluates to true</span></code> </p>
+                    <p><code>(10 &gt; 100) || (10 &lt; -5); <span class="comment">// false OR false evaluates to false</span></code> </p>
+                  </div>
+                </li>
+                <li>
+                  <p><code>!</code>: logical NOT operator takes one operand only.</p>
+                  <p>The logical NOT operator can toggle a boolean value from true to false, and vice versa.</p>
+                  <div class="example">
+                    <p>
+                      <code>var isItRaining = false;</code>
+                    </p>
+                    <p>
+                      <code>!isItRaining; <span class="comment">// evaluates to true</span></code>
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            
+            <li>
+              <h3>Operator precendence</h3>
+              <ul>
+                <li>
+                  <p>Operator precedence determines the order in which operators are evaluated. Operators with higher precedence are evaluated first.</p>
+                  <div class="example">
+                    <p><code>3 + 4 * 5; <span class="comment">// evaluates to 23 because * has higher precendence than +</span></code></p>
+                  </div>
+                </li>
+                <li>
+                  <p>If you want an operator with lower precendence to operate first, then wrap that operator's operands with a set parentheses:</p>
+                  <div class="example">
+                    <p><code>(3 + 4) * 5; <span class="comment">// evaluates to 35 because ( ) has higher precendence than *</span></code></p>
+                  </div>
+                </li>
+                <li><p>Complete list of operator precendence can be found here: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence</a></p></li>
+              </ul>
+            </li>
+
+            <li><p>There are other operators not mentioned here. You can check out the entire list of operators here: <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators</a></p></li>
+          </ul>
+        </li>
+      </ul>
+    
+    </main>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> JavaScript Built-in Objects </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">JavaScript Built-in Objects</h1>      
+      <ul>
+        <li><p>JavaScript provides built-in objects that are in the global scope, meaning you can access them anywhere in your code.</p></li>
+        <li><p>You should be aware of <code>String</code>, <code>Date</code> and <code>Math</code>.</p></li>
+        <li><p>For a list of the standard built-in objects, you can go to the following URL: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects</a></p></li>
+        <li>
+          <h2>String</h2>
+          <ul>
+            <li>
+              <p>The String data type provides methods you can use on an instance of a String.</p>
+              <div class="example">
+                <p><code>var str1 = "Today is Wednesday."</code></p>
+                <p><code>str1.length; <span class="comment">// returns the number of characters in the string: 19</span></code></p>
+                <p><span class="js-comment">// Each character in a string is indexed like an array would index its elements.</span></p>
+                <p><code>str1.indexOf("day"); <span class="comment">// returns the index for the first occurence of the string "day" - in this case the return value is 2.</span></code></p>
+                <p><code>str1.indexOf("day", 3); <span class="comment">// .indexOf() takes an optional index parameter. This index parameter tells the method which index to start the search on - in this case the return value will be 15.</span></code></p>
+                <p><code>str1.indexOf("foo"); <span class="comment">// returns -1 if a match cannot be found.</span></code></p>
+                <p><code>str1.toLowerCase(); <span class="comment">// returns a string with the letters being lowercase.</span></code></p>
+                <p><code>str1.toUpperCase(); <span class="comment">// returns a string with the letters being uppercase.</span></code></p>
+              </div>
+              <p>For more information on Strings check out the following URL: <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String</a></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2>Date</h2>
+          <ul>
+            <li><p>The <code>Date</code> constructor creates a Date instance. Here are the ways you can call the constructor:</p>
+              <div class="example">
+                <p><code>new Date(); <span class="comment">// creates a date instance with the current date and time based on the system settings</span></code></p>
+                <p><code>new Date(value); <span class="comment">// argument is an integer representing the number of milliseconds since 1 January 1970 00:00:00 UTC </span></code></p>
+                <p><code>new Date(dateString); <span class="comment">// argument is a string in a format that the constructor recognizes: RFC2822 or ISO 8601 </span></code></p>
+                <p><code>new Date(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]); <span class="comment">// at least 2 arguments representing the year and month (0 to 11), and optional arguments for the rest (the square brackets means the arguments within them are optional, you don't actually type in the square brackets).</span></code></p>
+              </div>
+            </li>
+            <li><p>A Date instance has many methods, you can check them out at this URL: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date</a></p></li>
+            <li>
+              <p>To compare two dates, you should call the <code>.getTime()</code> method. It returns the number of milliseconds for that date instance since January 1st 1970 00:00:00 UTC.</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2>Math</h2>
+          <ul>
+            <li><p>The <code>Math</code> module contains math-related properties and functions. You don't create an instance from it, you just use the properties and functions that belong to the module.</p>
+              <div class="example">
+                <p><code>Math.PI; <span class="comment">// returns the value of π</span></code></p>
+                <p><code>Math.random(); <span class="comment">// returns a random floating point number from 0 to, but not including, 1</span></code></p>
+                <p><code>Math.min([value1[, value2[, ...]]]); <span class="comment">// returns the smallest of zero or more numbers</span></code></p>
+                <p><code>Math.max([value1[, value2[, ...]]]); <span class="comment">// returns the largest of zero or more numbers</span></code></p>
+              </div>
+            </li>
+            <li><p>For more information on the <code>Math</code> module, check out the following URL: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math" target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math</a></p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>

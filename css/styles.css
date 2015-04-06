@@ -1,0 +1,146 @@
+* { margin: 0; padding: 0; }
+html { font: 1em/1.5 Helvetica, sans-serif; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.17rem; }
+nav {
+  padding: 50px;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+main {
+  width: 80%;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+main > ul > li, 
+main > ol > li {
+  margin: 0 0 2em 0;
+}
+ul, ol {
+  padding-left: 24px;
+}
+p {
+  font-size: 1.15rem;
+}
+li {
+  font-size: 1.25rem;
+}
+h1, h2, h3, h4, h5, h6, p {
+  margin: .75rem 0;
+}
+code {
+  font-size: 1.25rem;
+  background-color: rgba(255, 167, 0, .333);
+  background-color: bisque;
+  padding: 5px 8px;
+}
+.syntax {
+  font-family: monospace;
+  font-size: 1.5rem;
+  padding: 0 5px;
+}
+.title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.example {
+  margin: 1em auto;
+  width: 80%;
+  padding: 20px;
+  border: 3px solid #ccc;
+}
+.example code {
+  background-color: transparent;
+  padding-left: 0;
+  display: block;
+}
+code .comment {
+  color: #999;
+}
+.example p {
+  margin: .25rem 0;
+  font-size: 1.1rem;
+}
+
+.js-comment {
+  color: #999;
+  font-size: 1.25rem;
+  font-family: monospace;
+}
+
+code.block {
+  font-size: 
+}
+code.block, code.fn, span.fn, code.obj {
+  display: block;
+}
+code.fn .fn {
+  padding-left: 1.4rem;
+}
+span.block-head, span.fn-head, span.obj-head {
+  display: block;
+}
+span.block-body, span.fn-body, span.obj-body {
+  display: block;
+  padding-left: 1.4rem;
+}
+
+span.block-foot, span.fn-foot, span.obj-foot {
+  display: block;
+}
+.block-body-body {
+  padding-left: 2.8rem;
+  display: block;
+}
+.block-body-body-body {
+  padding-left: 4.4rem;
+  display: block;
+}
+
+.attention {
+  font-weight: bold;
+  background: pink;
+  padding: 3px;
+}
+
+#node-type {
+  width: 50%;
+}
+
+#node-type th {
+  background-color: rgba(212,221,228,.5);
+  border-bottom: 2px solid #d4dde4;
+  padding: 2px 8px 4px;
+  font-weight: normal;
+}
+
+#node-type td {
+  padding: 2px 8px 4px;
+}
+
+@media print {
+  html {
+    font-size: 10px;
+  }
+  main {
+    padding: 0;
+    width: 100%;
+  }
+  .example {
+    width: 90%;
+  }
+  code {
+    font-size: 1rem;
+  }
+  .js-comment {
+    font-size: 1rem;
+  }
+  .title {
+    margin-bottom: 0;
+  }
+  main > ul > li, main > ol > li {
+    margin-bottom: 1rem;
+  }
+}

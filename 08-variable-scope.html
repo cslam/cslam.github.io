@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> Variable Scope </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title"> Variable Scope </h1>
+      
+      <ul>
+        <li> <p>Variable scope defines the places in your script where a variable can be accessed.</p> </li>
+        <li> <p>Variables can either be <strong>local</strong> variables or <strong>global</strong> variables.</p> </li>
+        <li> <p><strong>Global</strong> variables are defined outside of any function, and can be used by code anywhere within the script (as long as the variable has been initialized before the code runs).</p> </li>
+        <li> 
+          <p><strong>Local</strong> variables are defined inside of a function, and can be used only within the function that they are defined in.</p> 
+          <div class="example">
+            <p> <code>var globalVar = 100;</code> </p>
+            <p>
+              <code class="fn">
+                <span class="fn-head">function add(num) { <span class="comment">// parameter num is treated as a local variable inside the add function.</span></span>
+                <span class="fn-body">var sum = globalVar + num; <span class="comment">// sum is a local variable inside the add function.</span></span>
+                <span class="fn-body">return sum;</span>
+                <span class="fn-foot">}</span>
+              </code>
+            </p>
+            <p>
+              <code class="fn">
+                <span class="fn-head">function subtract(num) { <span class="comment">// parameter num is treated as a local variable inside the subtract function</span></span>
+                <span class="fn-body">var diff = globalVar - num; <span class="comment">// diff is a local variable inside the subtract function.</span></span>
+                <span class="fn-body">return diff;</span>
+                <span class="fn-head">}</span>
+              </code>
+            </p>
+            <p><code>add(25); <span class="comment">// returns 125</span></code></p>
+            <p><code>subtract(25); <span class="comment">// returns 75</span></code></p>
+            <p><code>globalVar = 300; <span class="comment">// changing a global variable will affect code that uses it.</span></code></p>
+            <p><code>add(25); <span class="comment">// returns 325</span></code></p>
+            <p><code>subtract(25); <span class="comment">// returns 275</span></code></p>
+          </div>
+        </li>
+
+        <li>
+          <h3>Scope chain</h3>
+          <ul>
+            <li>
+              <p>When a function references a variable, it will first look for that variable in its <strong>local scope (inside the function)</strong>, if not found, it will go up the scope chain (its outer scopes) until it finds the variable or fails to find it (an exception/error would then occur).</p>
+            </li>
+            <li>
+              <p>A variable that is in an outer scope means it is defined outside of a function. Outer scope doesn't necessarily mean it's in global scope though, instead it could be in an outer function. </p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h3>Variable conflicts</h3>
+          <ul>
+            <li>
+              <p><strong>Variable conflicts</strong> occur when there's a local variable that has the same name as a variable in an <strong>outer scope</strong>.</p>
+              <p><strong>Avoid</strong> variable conflicts in your code!</p>
+              <p>The below examples explain both variable scope and variable conflicts:</p>
+              <div class="example">
+                <p><code><span class="comment">// Inside the two functions, variable conflict is happening with the variable numOfWindows. NOT GOOD!</span></code></p>
+                <p><code>var numOfWindows = 0; <span class="comment">// this var is in global scope</span></code></p>
+                <p>
+                  <code class="block">
+                    <span class="block-head">function createHouse() {</span>
+                    <span class="block-body">var numOfWindows = 24; <span class="comment">// this var is in the outer scope of the createBedroom</span></span>
+                    <span class="block-body">function createBedroom() { <span class="comment">// this is a nested function (inside another function)</span></span>
+                    <span class="block-body-body">var numOfWindows = 4; <span class="comment">// this var is in the local scope of the createBedroom</span></span>
+                    <span class="block-body-body">alert(numOfWindows); <span class="comment">// this will display 4 in the alert window</span></span>
+                    <span class="block-body">}</span>
+                    <span class="block-body">createBedroom();</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p><code>createHouse(); <span class="comment">// createHouse() will call createBedroom function</span></code></p>
+              </div>
+
+              <div class="example">
+                <p><code><span class="comment">// Variable conflicts happening with the variable numOfWindows. NOT GOOD!</span></code></p>
+                <p><code>var numOfWindows = 0; <span class="comment">// this var is in global scope</span></code></p>
+                <p>
+                  <code class="block">
+                    <span class="block-head">function createHouse() {</span>
+                    <span class="block-body">var numOfWindows = 24; <span class="comment">// this var is in the outer scope of the createBedroom</span></span>
+                    <span class="block-body">function createBedroom() {</span>
+                    <span class="block-body-body"><span class="comment">// Since numOfWindows is not defined in the local scope, createBedroom will go up the scope chain to search for this variable.</span></span>
+                    <span class="block-body-body">alert(numOfWindows); <span class="comment">// this will display 24 in the alert window</span></span>
+                    <span class="block-body">}</span>
+                    <span class="block-body">createBedroom();</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p><code>createHouse();</code></p>
+              </div>
+
+              <div class="example">
+                <p><code>var numOfWindows = 0; <span class="comment">// this var is in global scope</span></code></p>
+                <p>
+                  <code class="block">
+                    <span class="block-head">function createHouse() {</span>
+                    <span class="block-body">function createBedroom() {</span>
+                    <span class="block-body-body">alert(numOfWindows); <span class="comment">// this will display 0 in the alert window</span></span>
+                    <span class="block-body">}</span>
+                    <span class="block-body">createBedroom();</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p><code>createHouse();</code></p>
+              </div>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </main>
+
+  </body>
+</html>

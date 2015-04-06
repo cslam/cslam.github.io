@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> JavaScript Collections </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">Collection Data Types</h1>      
+      <ul>
+        <li><p>A collection, or a list, is a data structure that can store multiple values. Two popular collections are <em>arrays</em> and <em>dictionaries</em>.</p></li>
+        <li>
+          <h2>Arrays</h2>
+          <ul>
+            <li><p>Arrays store an ordered list of values.</p></li>
+            <li><p>Array values are ordered by index number with the 0-th index referring to the first item in the array.</p></li>
+            <li><p>Array values are retrieved by using bracket notation <code>[ ]</code> after the array, and providing an index number inside the brackets.</p></li>
+            <li><p>Use arrays when you have a list of values that are of similar data type and you want to run the same code on each of those values.</p>
+              <div class="example">
+                <p><code>[1, 2, 3, 4]; <span class="comment">// creates an array literal</span></code></p>
+                <p><code>var numbers = [1, 2, 3, 4]; <span class="comment">// stores an array to a variable</span></code></p>
+                <p><code>numbers[0]; <span class="comment">// returns the first item in the array, which is 1</span></code></p>
+                <p><code>numbers[1]; <span class="comment">// returns the second item in the array, which is 2</span></code></p>
+                <p><code>numbers.length; <span class="comment">// .length is a built-in property of an array that returns the number of items in the array. In this case it's 4</span></code></p>
+              </div>
+            </li>
+            <li>
+              <p>There are several methods built in to an array that can help you interface with the array. Some of them are:</p>
+              <ul>
+                <li><p><code>.push(element)</code> - appends an element to the end of the array</p></li>
+                <li><p><code>.pop()</code> - removes the last element from an array</p>
+                  <div class="example">
+                    <p><code>var numbers = [1, 2, 3, 4];</code></p>
+                    <p><code>numbers.push("hello"); <span class="comment">// the array is now [1, 2, 3, 4, "hello"]</span></code></p>
+                    <p><code>numbers.pop(); <span class="comment">// the array is now [1, 2, 3, 4]</span></code></p>
+                    <p><code><span class="comment">// You can also set a value in an array by accessing the index where you want to store the value at: </span></code></p>
+                    <p><code>numbers[numbers.length] = "world"; <span class="comment">// add "world" to end of array</span></code></p>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>For a comprehensive list of array methods and properties, check out the following site: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array</a></p>
+              <p>You should review <code>.forEach()</code>, <code>.join()</code>, <code>.slice()</code>, <code>.splice()</code> </p>
+            </li>
+          </ul>
+        </li>
+        
+        <li>
+          <h2>Dictionary</h2>
+          <ul>
+            <li><p>Dictionary is an unordered collection of values where each value is mapped to a unique key.</p></li>
+            <li><p>To set or get a value, you use bracket notation, <code>[ ]</code>, or dot notation, <code>.</code>, after the dictionary.</p></li>
+            <li><p>In JavaScript, a dictionary is represented by an object literal, and a key from a dictionary is commonly referred to as a property of the object:</p>
+              <div class="example">
+                <p>
+                  <code class="block">
+                    <span class="comment">// This dictionary (object) stored in a variable called person.</span><br />
+                    <span class="comment">// Each key-value pair syntax is written as key: value</span><br />
+                    <span class="comment">// The key-value pairs are separated by commas.</span>
+                    <span class="block-head">var person = {</span>
+                    <span class="block-body">name: "Chris", <span class="comment">// the property is name and the value is "Chris"</span></span>
+                    <span class="block-body">age: 55</span>
+                    <span class="block-foot">};</span>
+                  </code>
+                </p>
+                <p><code>person.name; <span class="comment">// dot notation: this evaluates to "Chris"</span></code></p>
+                <p><code>person["name"]; <span class="comment">// square bracket notation: this evaluates to "Chris"</span></code></p>
+                <p><code>var key = "name";</code></p>
+                <p><code>person[key]; <span class="comment">// this evaluates to "Chris"</span></code></p>
+              </div>
+            </li>
+            <li>
+              <p>Even after you have created the JavaScript object, you can still add new key value pairs:</p>
+              <div class="example">
+                <p><code>person.skills = ["HTML", "CSS", "JavaScript"]; <span class="comment">// Adding a new property called skills that stores an array of Strings.</span></code></p>
+              </div>
+            </li>
+            <li>
+              <p>You can remove an object's property using the <code>delete</code> keyword:</p>
+              <div class="example">
+                <p><code>delete person.age; <span class="comment">// delete the age property from person object</span></code></p>
+                <p><code>person.age; <span class="comment">// person.age now evaluates to undefined</span></code></p>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    
+    </main>
+  </body>
+</html>

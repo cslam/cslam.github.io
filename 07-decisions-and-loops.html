@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> Control Flow </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">Control Flow</h1>      
+      
+      <ul>
+        <li>
+          <p>There are certain programming constructs that determine the control flow (the order in which statements are executed) of your JavaScript code:</p>
+          <ol>
+            <li>
+              <p>The <code>if</code> statement and its different variations.</p>
+              <p><code>if</code> statement checks a condition, if it's true the code inside the <code>if</code> block will run. If condition is false, the code inside the block will be skipped.</p>
+              <div class="example">
+                <p><code>var num = 50;</code></p>
+                <p>
+                  <code>
+                    <span class="block-head">if (num &gt; 10) {</span>
+                    <span class="block-body">console.log("number is greater than 10"); <span class="comment">// code inside the "if" block</span></span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p><code><span class="comment">// prints "number is greater than 10" to the console.</span></code></p>
+              </div>
+              <div class="example">
+                <p><code>var isItRaining = false;</code></p>
+                <p>
+                  <code>
+                    <span class="block-head">if (isItRaining) {</span>
+                    <span class="block-body">console.log("bring an umbrella.");</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p><code><span class="comment">// code inside "if" block is skipped.</span></code></p>
+              </div>
+              <p>You can chain multiple <code>else-if</code> blocks after the <code>if</code> block in order to check for multiple conditions.</p>
+              <div class="example">
+                <p><code>var num = 12;</code></p>
+                <p>
+                  <code>
+                    <span class="block-head">if (num &lt; 10) {</span>
+                    <span class="block-body">console.log("number is less than 10");</span>
+                    <span class="block-foot">} else if (num &lt; 20) {</span>
+                    <span class="block-body">console.log("number is less than 20");</span>
+                    <span class="block-foot">} else if (num &lt; 30) {</span>
+                    <span class="block-body">console.log("number is less than 30");</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p><code><span class="comment">// prints "number is less than 20" to the console.</span></code></p>
+              </div>
+              <p>And finally, you can add a single <code>else</code> block at the end of an <code>if</code> or the last <code>else-if</code>:</p>
+              <div class="example">
+                <p><code>var num = 100;</code></p>
+                <p>
+                  <code>
+                    <span class="block-head">if (num &lt; 10) {</span>
+                    <span class="block-body">console.log("number is less than 10");</span>
+                    <span class="block-foot">} else if (num &lt; 20) {</span>
+                    <span class="block-body">console.log("number is less than 20");</span>
+                    <span class="block-foot">} else if (num &lt; 30) {</span>
+                    <span class="block-body">console.log("number is less than 30");</span>
+                    <span class="block-foot">} else {</span>
+                    <span class="block-body">console.log("number is 30 or greater.");</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p><code><span class="comment">// prints "number is 30 or greater" to the console.</span></code></p>
+              </div>
+            </li>
+            
+            <li>
+              <p>A <code>switch</code> statement takes a value and tries to match it to one of its <code>case</code> clauses, if a match is found the code associated with the matching <code>case</code> clause is executed :</p>
+              <div class="example">
+                <p><code>var numberOfWheels = 2;</code></p>
+                <p>
+                  <code>
+                    <span class="block-head">switch(numberOfWheels) {</span>
+                    <span class="block-head">case 4:</span>
+                    <span class="block-body">console.log("it has four wheels.");</span>
+                    <span class="block-body">break; <span class="comment">// If you don't add the keyword break at the end of each case's code, the code will fallthrough to the next case. We usually don't want that to happen! </span></span>
+                    <span class="block-head">case 3:</span>
+                    <span class="block-body">console.log("it has three wheels.");</span>
+                    <span class="block-body">break;</span>
+                    <span class="block-head">case 2:</span>
+                    <span class="block-body">console.log("it has two wheels.");</span>
+                    <span class="block-body">break;</span>
+                    <span class="block-head">case 1:</span>
+                    <span class="block-body">console.log("it has one wheel.");</span>
+                    <span class="block-body">break;</span>
+                    <span class="block-head">default: <span class="comment">// Optional "default" clause code is run when no matches are found. </span></span>
+                    <span class="block-body">console.log("Number of wheels is not in the range of 1 to 4.");</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p><code><span class="comment">// prints "it has two wheels" to the console.</span></code></p>
+              </div>
+            </li>
+            <li>
+              <p>Loops - a loop checks a condition and if the condition evaluates to <code>true</code> or truthy, then the code associated with the loop is executed. The loop code will repeat as long as the condition is true.</p>           
+              <ul>
+                <li>
+                  <p>a <code>for</code> loop:</p>
+                  <div class="example">
+                    <p>
+                      <code>var numbers = [100, 200, 300, 400];</code>
+                    </p>
+                    <p>
+                      <code class="block">
+                        <span class="comment">// A "for" loops has three parts wrapped inside a pair of parentheses. The parts are separated by a ;</span><br />
+                        <span class="comment">// 1st part: the <em>initialization</em>. This is where you would initialize a counter for the loop (e.g., var i = 0).</span> <br />
+                        <span class="comment">// 2nd part: the <em>condition</em>. This is an expression (e.g., i &lt; numbers.length) to be evaluated before the start of each loop. If the expression evaluates to true, then the loop code will run. If false, the loop exits.</span><br />
+                        <span class="comment">// 3rd part: the <em>post expression</em>. An expression to be evaluated after the loop code has ran. You use this part to write code that will eventually make the loop  exit. (e.g., increment the counter: i+=1)</span>
+                      </code>
+                    </p>
+                    <p>
+                      <code>
+                        <span class="block-head">for (var i = 0; i &lt; numbers.length; i+=1) {</span>
+                        <span class="block-body">console.log(numbers[i]); <span class="comment">// will print contents of the "numbers" array using variable "i" as index for the array.</span></span>
+                        <span class="block-foot">}</span>
+                      </code>
+                    </p>                  
+                  </div>
+                </li>
+                  
+                <li>
+                  <p>a <code>while</code> loop:</p>
+                  <div class="example">
+                    <p>
+                      <code>
+                        <span class="comment">// A "while" loop runs as long as its condition (which is wrapped by a pair of parentheses) evaluates to true.</span>
+                      </code>
+                    </p>           
+                    <p><code>var i = 0;</code></p>
+                    <p>
+                      <code>
+                        <span class="block-head">while (i &lt; 10) {</span>
+                        <span class="block-body">console.log(i); <span class="comment">// prints the value of i to the console during each run of the loop.</span></span>
+                          <span class="block-body">i+=1; <span class="comment">// make sure to write code that will lead to the end of the loop, or the loop might go on forever (NOT GOOD!).</span></span>
+                        <span class="block-foot">}</span>
+                      </code>
+                    </p>                  
+                  </div>
+                </li>
+                
+                <li>
+                  <p>a <code>do-while</code> loop:</p>
+                  <div class="example">
+                    <p>
+                      <code>
+                        <span class="comment">// A "do-while" loop is similar to a "while" loop, the difference is a "do-while" loop checks its condition after loop code has ran. This means the loop code will run at least once.</span>
+                      </code>
+                    </p>           
+                    <p><code>var i = 10;</code></p>
+                    <p>
+                      <code>
+                        <span class="block-head">do {</span>
+                        <span class="block-body">console.log(i); <span class="comment">// prints a 10 to the console.</span></span>
+                        <span class="block-foot">} while (i != 10);</span>
+                      </code>
+                    </p>                  
+                  </div>
+                </li>
+                
+                <li>
+                  <p>a <code>for-in</code> loop:</p>
+                  <div class="example">
+                    <p>
+                      <code>
+                        <span class="comment">// A "for-in" loop will iterate over all the enumerable properties of an object but in no particular order.</span>
+                      </code>
+                    </p>           
+                    <p>
+                      <code class="block">
+                        <span class="block-head">var car = {</span>
+                        <span class="block-body">doors: 4,</span>
+                        <span class="block-body">wheels: 4,</span>
+                        <span class="block-body">hasSunroof: false</span>
+                        <span class="block-foot">};</span>
+                      </code>
+                    </p>
+                    <p>
+                      <code>
+                        <span class="comment">// The following loop will repeat as many times as there are enumerable properties in the car object.</span><br />
+                        <span class="comment">// Each time the property variable will point to a different property of the car.</span>
+                        <span class="block-head">for (var property in car) {</span>
+                        <span class="block-body">console.log(property); <span class="comment">// prints a different car property</span></span>
+                        <span class="block-body">console.log(car[property]); <span class="comment">// prints the value of the car's property to the console</span></span>
+                        <span class="block-foot">}</span>
+                      </code>
+                    </p>
+                  </div>
+                </li>
+                
+                <li>
+                  <p>Use the keyword <code>break</code> to end a loop earlier than planned:</p>
+                  <div class="example">
+                    <p>
+                      <code>var numbers = [100, 200, 300, 400];</code>
+                    </p>
+                    <p>
+                      <code>
+                        <span class="block-head">for (var i = 0; i &lt; numbers.length; i+=1) {</span>
+                        <span class="block-body">if (numbers[i] &gt; 250) {</span>
+                        <span class="block-body-body">break; <span class="comment">// Stop the loop if current number in array is greater than 250.</span></span>
+                        <span class="block-body">}</span>
+                        <span class="block-body">console.log(numbers[i]); <span class="comment">// will print contents of the "numbers" array using variable i as index for the array.</span></span>
+                        <span class="block-foot">}</span>
+                      </code>
+                    </p>                  
+                  </div>
+                </li>
+                
+                <li>
+                  <p>Use the keyword <code>continue</code> to skip the current iteration of the loop and start the next iteration:</p>
+                  <div class="example">
+                    <p><code>var numbers = [100, 200, 300, 400];</code></p>
+                    <p>
+                      <code>
+                        <span class="block-head">for (var i = 0; i &lt; numbers.length; i+=1) {</span>
+                        <span class="block-body">if (numbers[i] === 200) {</span>
+                        <span class="block-body-body">continue; <span class="comment">// Skip this iteration of the loop if current number in array is equal to 200.</span></span>
+                        <span class="block-body">}</span>
+                        <span class="block-body">console.log(numbers[i]); <span class="comment">// will print contents of the "numbers" array using variable i as index for the array.</span></span>
+                        <span class="block-foot">}</span>
+                      </code>
+                    </p>                  
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ol>
+        </li>
+      </ul>    
+    </main>
+  </body>
+</html>

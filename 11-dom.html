@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> Document Object Model </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">Document Object Model - DOM</h1>      
+      <ul>
+        <li>
+          <p>The browser uses the Document Object Model, or DOM, to model an HTML page. JavaScript uses this model to interact with the HTML page.</p>
+        </li>
+        <li>
+          <p>The DOM uses a family tree-like model to represent a web page.</p>
+        </li>
+        <li>
+          <p>Each web page has a <code>document</code> object. It is the root node in the DOM tree. You use its properties and methods to interact with the DOM tree.</p>
+        </li>
+        <li>
+          <h2>Nodes</h2>
+          <p>The DOM tree is made up of different types of nodes. Here are the ones you should be know about:</p>
+          <ol>
+            <li>
+              <p><strong>document</strong>: this node is at the top of the DOM tree (no parent node for <code>document</code>). It is represented by the <code>document</code> object.</p>
+            </li>
+            <li>
+              <p><strong>element</strong>: HTML element nodes are the HTML tags you use to structure a web page (e.g., <code>&lt;h1&gt;, &lt;div&gt;, &lt;a&gt;</code>, etc.). An element node can have children nodes which would make itself a parent node. </p>
+            </li>
+            <li>
+              <p><strong>text</strong>: Text nodes contain the actual text you see on web pages. Text nodes cannot have children nodes.</p>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <h2>Methods For Retrieving Elements</h2>
+          <p> <em>(Any of the following methods without an object prepended to it means they can <strong>both</strong> be called by the <code>document</code> object or an element object.)</em></p>
+          <ol>
+            <li><p><code>document.getElementById(value)</code>: returns an element whose <code>id</code> attribute matches the string that is passed to the method. If no match is found, it returns <code>null</code>.</p></li>
+            <li><p><code>.querySelector(selectors)</code>: returns the first element that matches all the CSS selectors (separated by commas) that are passed (as one string) into the method.</p></li>
+            <li><p><code>.getElementsByTagName(tagname)</code>: returns an array-like collection that contains all the elements that with a tag name that matches the string that is passed to the method. If no match is found, the collection will empty.</p></li>
+            <li><p><code>.getElementsByClassName(classnames)</code>: returns an array-like collection of elements which all contain the classnames (separated by whitespaces) passed (as one string) to the method.</p></li>
+            <li><p><code>.querySelectorAll(selectors)</code>: returns an array-like collection of elements that match all the CSS selectors (separated by commas) that are passed (as one string) to the method.</p></li>
+          </ol>
+          <div class="example">
+            <p><code>var element = document.getElementById('photo-gallery');</code></p>
+            <p><code class="block">
+              <span class="block-head">if (element) { <span class="comment">// since all values are either truthy or falsy, this is a valid check.</span></span>
+              <span class="block-body"><span class="comment">// In most cases, any attribute of an element will have a corresponding property for the element. In this example, the id attribute has an id property:</span></span>
+              <span class="block-body">console.log(element.id); <span class="comment">// evaluates to the string "photo-gallery"</span></span>
+              <span class="block-foot">}</span>
+              </code></p>
+          </div>
+          
+          <div class="example">
+            <p><code>var elements = document.getElementsByTagName('div');</code></p>
+            <p><code class="block">
+              <span class="block-head"><span class="comment">// You can declare and initialize multiple variables in the initialization part of a for loop. In this example, variables i and len are declared and initialized:</span></span>
+              <span class="block-head">for (var i = 0, len = elements.length; i &lt; len; i+=1) {</span>
+              <span class="block-body"><span class="comment">// nodeName is a property of a node, and it stores a string that represents the name of the node:</span></span>
+              <span class="block-body">console.log(elements[i].nodeName); <span class="comment">// each one of the elements will have a nodeName of "div"</span></span>              
+              <span class="block-foot">}</span>
+              </code></p>
+          </div>
+          
+          <div class="example">
+            <p><code>var elements = document.querySelectorAll('h1.title');</code></p>
+            <p><code class="block">
+              <span class="block-head">for (var i = 0, len = elements.length; i &lt; len; i+=1) {</span>
+              <span class="block-body"><span class="comment">// className is a property of an element, and it stores a string that represents the value of the class attribute:</span></span>
+              <span class="block-body">console.log(elements[i].className); <span class="comment">// each one of the elements will have a "title" as part of its className value</span></span>              
+              <span class="block-foot">}</span>
+              </code></p>
+          </div>
+        </li>
+        <li>
+          <h2>Traversing the DOM tree</h2>
+          <p>You can use the following properties of a HTML element to traverse the DOM tree (to get to other nodes):</p>
+          <p>If these properties do not find have a matching node, then <code>null</code> is returned instead.</p>
+          <ol>
+            <li><p><code>.parentNode</code>: returns the parent node of an element.</p></li>
+            <li><p><code>.previousSibling</code>: returns the previous sibling node of an element.</p></li>
+            <li><p><code>.nextSibling</code>: returns the next sibling node of an element.</p></li>
+            <li><p><code>.firstChild</code>: returns the first child node of an element.</p></li>
+            <li><p><code>.lastChild</code>: returns the last child node of an element.</p></li>
+            <li><p><code>.childNodes</code>: returns an array-like collection of child nodes of an element.</p></li>
+          </ol>
+          <p>Be aware that these properties not only return element nodes but can return text nodes.</p> 
+          <p>Almost 100% of the time, you would want an element node and not a text node. You can use the <code>.nodeType</code> property of a node to check what type of node it is:</p>
+          <table id="node-type">
+            <thead>
+              <tr>
+                <th>Node</th>
+                <th>.nodeType</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>element</td><td>1 (or use <code>Node.ELEMENT_NODE</code>)</td></tr>
+              <tr><td>text</td><td>3 (or use <code>Node.TEXT_NODE</code>)</td></tr>
+              <tr><td>document</td><td>9 (or use <code>Node.DOCUMENT_NODE</code>)</td></tr>
+            </tbody>
+          </table>
+          <div class="example">
+            <p>HTML:</p>
+            <p>
+              <code class="block">
+                <span class="block-head">&lt;div id="box"&gt;</span>
+                <span class="block-body">&lt;p&gt;This is &lt;em&gt;a short&lt;/em&gt; text.&lt;/p&gt;</span>
+                <span class="block-body">&lt;a href="http://www.google.com"&gt;Google&lt;/a&gt;</span>
+                <span class="block-body">&lt;img src="pic.gif" /&gt;</span>
+                <span class="block-foot">&lt;/div&gt;</span>
+              </code>
+            </p>
+            <br /><hr /><br />
+            <p>JavaScript:</p>
+            <p><code>var boxEl = document.getElementById('box');</code></p>
+            <p><code>var elementNodeCount = 0;</code></p>
+            <p>
+              <code class="block">
+                <span class="block-head">for (var i = 0, len = boxEl.childNodes.length; i &lt; len; i+=1) {</span>
+                <span class="block-body">if (boxEl.childNodes[i].nodeType === Node.ELEMENT_NODE) {</span>
+                <span class="block-body-body">++elementNodeCount;</span>
+                <span class="block-body">}</span>
+                <span class="block-foot">}</span>
+              </code>
+            </p>
+            <p><code>console.log(elementNodeCount); <span class="comment">// returns 3</span></code></p>
+          </div>
+          <p>You can also use the "element" versions of the above properties to return only element nodes (be aware some older browsers do not support some of these properties):</p>
+          <ol>
+            <li><p><code>.parentElement</code>: returns the parent element node of an element.</p></li>
+            <li><p><code>.previousElementSibling</code>: returns the previous sibling element node of an element.</p></li>
+            <li><p><code>.nextElementSibling</code>: returns the next sibling element node of an element.</p></li>
+            <li><p><code>.firstElementChild</code>: returns the first child element node of an element.</p></li>
+            <li><p><code>.lastElementChild</code>: returns the last child element node of an element.</p></li>
+            <li><p><code>.children</code>: returns an array-like collection of child elements nodes of an element.</p></li>
+          </ol>
+          <div class="example">
+            <p>HTML:</p>
+            <p>
+              <code class="block">
+                <span class="block-head">&lt;div id="box"&gt;</span>
+                <span class="block-body">&lt;p&gt;This is &lt;em&gt;a short&lt;/em&gt; text.&lt;/p&gt;</span>
+                <span class="block-body">&lt;a href="http://www.google.com"&gt;Google&lt;/a&gt;</span>
+                <span class="block-body">&lt;img src="pic.gif" /&gt;</span>
+                <span class="block-foot">&lt;/div&gt;</span>
+              </code>
+            </p>
+            <br /><hr /><br />
+            <p>JavaScript:</p>
+            <p><code>var boxEl = document.getElementById('box');</code></p>
+            <p><code>boxEl.children.length; <span class="comment">// evaluates to 3 (3 children elements for div#box)</span></code></p>
+            <p><code>boxEl.children[0]; <span class="comment">// returns the &lt;p&gt; node</span></code></p>
+            <p><code>boxEl.children[1]; <span class="comment">// returns the &lt;a&gt; node</span></code></p>
+            <p><code>boxEl.children[2]; <span class="comment">// returns the &lt;img&gt; node</span></code></p>
+            <p><code>boxEl.children[0].childNodes.length; <span class="comment">// evaluates to 3. can you figure out the 3 child nodes?</span></code></p>
+            <p><code>boxEl.firstElementChild; <span class="comment">// returns the &lt;p&gt; node</span></code></p>
+            <p><code>boxEl.firstChild; <span class="comment">// what will this return? remember: whitespace, and newlines count as nodes.</span></code></p>
+            <p><code>boxEl.children[1].nextElementSibling; <span class="comment">// returns the &lt;img&gt; node</span></code></p>
+            <p><code>boxEl.children[1].previousElementSibling; <span class="comment">// returns the &lt;p&gt; node</span></code></p>
+            <p><code>boxEl.children[1].parentNode; <span class="comment">// returns the &lt;div id="box"&gt; node</span></code></p>
+          </div>
+        </li>
+        <li>
+          <h2>Creating and Updating Element Nodes and Text Nodes</h2>
+          <ol>
+            <li><p><code>document.createElement(tagname)</code>: creates and returns an element with the nodeType being passed as an argument.</p></li>
+            <li><p><code>document.createTextNode(someText)</code>: creates and returns a text node with text set to whatever string that's passed in as argument.</p></li>
+            <li><p><code><i>parentNode</i>.appendChild(someNode)</code>: adds someNode as the last child of parentNode. Also, it returns someNode.</p></li>
+            <li><p><code><i>parentNode</i>.insertBefore(node, referenceChildNode)</code>: inserts node before referenceChildNode, which is a child of parentNode. Also, it returns the inserted node.</p></li>
+            <li><p><code><i>parentNode</i>.removeChild(childNode)</code>: removes childNode from parentNode. Also, it returns the now orphan childNode.</p></li>
+            <li><p><code><i>parentNode</i>.replaceChild(newChild, oldChild)</code>: replaces oldChild node with newChild node. Also, it returns the replaced node.</p></li>
+            
+            <li><p><code><i>element</i>.innerHTML</code>: gets or sets the HTML content (in string format) of the element. Using <code>.innerHTML</code> comes with a security risk, especially if the HTML content is submitted by a user. For more information, check out this URL: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML#Security_considerations" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML#Security_considerations</a>.</p></li>
+            <li><p><code><i>node</i>.textContent</code>: gets the text content of the node and its descendants, or sets the text content of the node.</p></li>
+            <li><p><code><i>node</i>.nodeValue</code>: gets or sets the value of a node. If it's a text node, you can get or set its text (in string format). For element nodes the value will be <code>null</code>.</p></li>
+          </ol>
+          <div class="example">
+            <p>HTML: </p>
+            <p>
+              <code class="block">
+                <span class="block-head">&lt;div id="box"&gt;&lt;/div&gt;</span>
+              </code>
+            </p>
+            <br /><hr /><br />
+            <p>JavaScript:</p>
+            <p><code>var boxEl = document.getElementById('box');</code></p>
+            <p><code>boxEl.innerHTML; <span class="comment">// evaluates to "" (empty string)</span></code></p>
+            <p><code>boxEl.textContent; <span class="comment">// evaluates to "" (empty string)</span></code></p>
+            <p><code>var someEl = document.createElement('p'); <span class="comment">// creates a &lt;p&gt; element</span></code></p>
+            <p><code>var someTxtNode = document.createTextNode('some text here'); <span class="comment">// creates a text node with content</span></code></p>
+            <p><code>someEl.appendChild(someTxtNode); <span class="comment">// appends text to the end of someEl's list of child nodes</span></code></p>
+            <p><code>boxEl.appendChild(someEl); <span class="comment">// appends &lt;p&gt; element to the &lt;div&gt;</span></code></p>
+             <p><code>boxEl.innerHTML; <span class="comment">// evaluates to the string: "&lt;p&gt;some text here&lt;/p&gt;"</span></code></p>
+            <p><code>boxEl.textContent; <span class="comment">// evaluates to the string: "some text here"</span></code></p>
+            <br /><hr /><br />
+            <p>HTML (after the above JavaScript): </p>
+            <p>
+              <code class="block">
+                <span class="block-head">&lt;div id="box"&gt;</span>
+                <span class="block-body">&lt;p&gt;some text here&lt;/p&gt;</span>
+                <span class="block-foot">&lt;/div&gt;</span>
+              </code>
+            </p>
+            <br /><hr /><br />
+            <p>JavaScript:</p>
+            <p><code>boxEl.innerHTML += "&lt;a href=\"http://google.com\"&gt;Google&lt;/a&gt;"; <span class="comment">// appends content to boxEl</span></code></p>
+            <br /><hr /><br />
+            <p>HTML (after the above JavaScript): </p>
+            <p>
+              <code class="block">
+                <span class="block-head">&lt;div id="box"&gt;</span>
+                <span class="block-body">&lt;p&gt;some text here&lt;/p&gt;</span>
+                <span class="block-body">&lt;a href="http://google.com"&gt;Google&lt;/a&gt;</span>
+                <span class="block-foot">&lt;/div&gt;</span>
+              </code>
+            </p>
+          </div>
+        </li>
+        <li>
+          <h2>Attributes</h2>
+          <ul>
+            <li>
+              <p>In HTML, you add attributes to an element inside the opening tag of the element:</p>
+              <div class="example">
+                <p>HTML: </p>
+                <p>
+                  <code>
+                    <span class="comment">&lt;!-- Added values to the attributes id and class --&gt;</span>
+                  </code>
+                <p>
+                  <code>
+                    <span>&lt;div id="box" class="a b c"&gt;&lt;/div&gt;</span>
+                  </code>
+                </p>
+                <p>
+                  <code>
+                    <span class="comment">&lt;!-- Added value to the attribute src --&gt;</span>
+                  </code>
+                </p>
+                <p>
+                  <code>
+                    <span>&lt;img src="pic.gif" /&gt;</span>
+                  </code>
+                </p>
+              </div>
+            </li>
+            <li>
+              <p>In JavaScript you can get and set the values of these attributes either by:</p>
+              <ol>
+                <li><p>calling <code>.getAttribute()</code> and <code>.setAttribute()</code> on the element.</p></li>
+                <li>
+                  <p>OR accessing the attribute's corresponding property name on the element. This works only if the element supports that attribute.</p>
+                  <div class="example">
+                    <p><span class="js-comment">// Ways to get attribute values:</span></p>
+                    <p><code>var boxEl = document.getElementById('box');</code></p>
+                    <p><code>boxEl.getAttribute('id'); <span class="comment">// returns "box"</span></code></p>
+                    <p><code>boxEl.id; <span class="comment">// returns "box"</span></code></p>
+                    
+                    <p><code>boxEl.getAttribute('class'); <span class="comment">// returns "a b c"</span></code></p>
+                    <p><span class="js-comment">// There are a few property names that don't match the name of their corresponding attribute name. The "class" attribute is referred to as "className" in JavaScript. Also the &lt;label&gt;'s "for" attribute is referred to as "htmlFor" in JavaScript.:</span></p>
+                    <p><code>boxEl.className; <span class="comment">// returns "a b c"</span></code></p>
+                  </div>
+                  <div class="example">
+                    <p><span class="js-comment">// Ways to set attribute values:</span></p>
+                    <p><code>var boxEl = document.getElementById('box');</code></p>
+                    <p><code>boxEl.setAttribute('id', 'foo');</code></p>
+                    <p><code>boxEl.id = 'foo';</code></p>
+                    
+                    <p><code>boxEl.setAttribute('class', 'x y z'); </code></p>
+                    <p><span class="js-comment">// There are a few property names that don't match the name of their corresponding attribute name. The "class" attribute is referred to as "className" in JavaScript. Also the &lt;label&gt;'s "for" attribute is referred to as "htmlFor" in JavaScript.:</span></p>
+                    <p><code>boxEl.className = 'x y z';</code></p>
+                  </div>
+                </li>
+              </ol>
+            </li>
+            <li><h3>New features: <code>.classList</code> and <code>.dataset</code></h3>
+              <ul>
+                <li>
+                  <p>The <code>.className</code> property contains the classnames for an element with the names separated by whitespace.</p>
+                  <p>If you need to add, remove, or check the existence of a classname, you will need to do string manipulation on the classname string.</p>
+                  <p>Instead, you can better manage the classnames for an element using <code>.classList</code> and its methods.</p>
+                  <div class="example">
+                    <p>HTML: </p>
+                    <p>
+                      <code>
+                        <span>&lt;div id="box" class="column"&gt;&lt;/div&gt;</span>
+                      </code>
+                    </p>
+                    <br /><hr /><br />
+                    <p>JavaScript: </p>
+                    <p><code>var boxEl = document.getElementById('box');</code></p>
+                    <p><code>boxEl.classList.contains("column"); <span class="comment">// evaluates to true</span></code></p>
+                    <p><code>boxEl.classList.add("favorites"); <span class="comment">// .className is now "column favorites"</span></code></p>
+                    <p><code>boxEl.classList.remove("column"); <span class="comment">// .className is now "column"</span></code></p>
+                    <p><code>boxEl.classList.toggle("column"); <span class="comment">// .className is now ""</span></code></p>
+                    <p><code>boxEl.classList.toggle("column"); <span class="comment">// .className is now "column"</span></code></p>
+                  </div>
+                </li>
+                <li>
+                  <p>HTML5 introduced the ability to create custom attribute names using the <code>data-</code> prefix.</p>
+                  <p>You can use <code>getAttribute()</code> and <code>setAttribute()</code> to get and set these custom attributes.</p> 
+                  <p>Newer versions of browsers provide an elegant way to get and set custom data attributes by using the <code>.dataset</code> property:</p>
+                  <div class="example">
+                    <p>HTML: </p>
+                    <p>
+                      <code>
+                        <span>&lt;div id="box" data-box-width="200px" data-box-height="150px"&gt;&lt;/div&gt;</span>
+                      </code>
+                    </p>
+                    <br /><hr /><br />
+                    <p>JavaScript: </p>
+                    <p><code>var boxEl = document.getElementById('box');</code></p>
+                    <p><span class="js-comment">// Notice how the custom attribute name is in camel-cased format and the hyphens removed when accessing it through .dataset</span></p>
+                    <p><code>boxEl.dataset.boxWidth; <span class="comment">// returns the string "200px"</span></code></p>
+                    <p><code>boxEl.dataset.boxHeight; <span class="comment">// returns the string "150px"</span></code></p>
+                    <p><code>boxEl.dataset.boxColor = "rgb(255,0,0)"; <span class="comment">// creates a new custom attribute with a value of "rgb(255,0,0)" set to it</span></code></p>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><h2>The <code>style</code> property</h2>
+          <ul>
+            <li><p>HTML element nodes have a <code>style</code> property. It is an object that represents the <code>style</code> attribute. This object uses the CSS property names as keys and the corresponding CSS values as values:</p>
+              <div class="example">
+                <p>HTML: </p>
+                <p>
+                  <code class="block">
+                    <span class="block-head">&lt;div id="box" style="background-color: red; font-size: 25px;"&gt;Text Here&lt;/div&gt;</span>
+                  </code>
+                </p>
+                <br /><hr /><br />
+                <p>JavaScript:</p>
+                <p><code>var boxEl = document.getElementById('box');</code></p>
+                <p><span class="js-comment">// The CSS keys are stored in camel-cased format with the hyphen removed.</span></p>
+                <p><code>boxEl.style.backgroundColor; <span class="comment">// evaluates to "red"</span></code></p>
+                <p><code>boxEl.style.fontSize; <span class="comment">// evaluates to 25px"</span></code></p>
+                <p><span class="js-comment">// You can also add CSS to the style property:</span></p>
+                <p><code>boxEl.style.padding = "50px"; <span class="comment">// Notice the value has to be a string type</span></code></p>
+                <p><span class="js-comment">// You can remove a CSS property from the style property by setting the CSS value  to "" (empty string):</span></p>
+                <p><code>boxEl.style.fontSize = "";</code></p>
+                <br /><hr /><br />
+                <p>HTML (after the above JavaScript): </p>
+                <p>
+                  <code class="block">
+                    <span class="block-head">&lt;div id="box" style="background-color: red; padding: 50px"&gt;Text Here&lt;/div&gt;</span>
+                  </code>
+                </p>
+              </div>
+            </li>
+            <li><p>More information on the <code>style</code> property can be found at this URL: <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style</a></p></li>
+            <li><p>The <code>style</code> property returns the inline styles set on an element. This doesn't factor in the styles defined for the element in a CSS stylesheet. You can get all the CSS values for an element using <code>window.getComputedStyle()</code> method.</p>
+            <p>More information on how to use <code>window.getComputedStyle()</code> can be found at this URL: <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle">https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle</a></p></li>
+          </ul>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>

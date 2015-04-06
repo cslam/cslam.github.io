@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> Embed JavaScript in a web page </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title"> Adding JavaScript to your web pages </h1>  
+      <ol>
+        <li>
+          <h2> Embed JavaScript code in a web page </h2>
+          <ul>
+            <li>
+              <p> Create a <code>script</code> element and add JavaScript code inside its opening and closing tags.</p>
+              <div class="example">
+                <p>Place this inside an HTML file:</p>
+                <p> <code>&lt;script&gt; alert("Hi there!"); &lt;/script&gt;</code> </p>
+              </div>
+            </li>
+          </ul>
+        </li>        
+        <li>
+          <h2> Reference an external JavaScript file from within the web page. </h2>
+          <ul>
+            <li>
+              <p> Create a <code>script</code> element and add a <code>src</code> attribute that contains the URL of a JavaScript file.</p>
+          
+              <div class="example">
+                <p>Place this inside an HTML file:</p>
+                <p><code>&lt;script src="js/jquery.js"&gt;&lt;/script&gt;</code> </p>
+              </div>             
+            </li>
+            <li>
+              <p> All JavaScript filenames <strong>should</strong> end with a <span class="syntax">.js</span> suffix. </p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2>Comments</h2>
+          <ul>
+            <li><p>You can add comments to your JavaScript code. Comments serve as notes to programmers to remind them the intent behind a particular segment of code. Machines do not understand comments and will not try to interpret them.</p></li>
+            <li><p>You can add a single-line comment or a mult-line comment.</p></li>
+            <li>
+              <p>To create a single line comment you begin it with a <code>//</code></p>
+              <p>Single-line comment can begin on its own line or be the last item on a line of code.</p>
+              <div class="example">
+                <p><span class="js-comment">// A single line comment on its own line</span></p>
+                <p><code>alert("hello world"); <span class="comment">// A single line comment following a JavaScript statement</span></code></p>
+              </div>
+            </li>
+            <li>
+              <p>To create a multi-line comment you wrapped the comment in between <code>/*</code> and <code>*/</code></p>
+              <p>You can create as many lines as you need for your comment when using multi-line comments.</p>
+              <div class="example">
+                <p><span class="js-comment">/* A multi-line comment using only one line */</span></p>
+                <p><code><span class="comment">/* a comment here</span></code></p>
+                <p><code><span class="comment">a comment here</span></code></p>
+                <p><code><span class="comment">a comment here */</span></code></p>
+                <p><code>alert("hello world"); <span class="comment">// each code statement should end with a semicolon</span></code></p>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ol>   
+    </main>
+  </body>
+</html>
