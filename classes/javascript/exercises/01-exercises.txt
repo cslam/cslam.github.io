@@ -1,0 +1,54 @@
+1) Add embedded JavaScript into a HTML page, add some comments
+
+2) Create a JavaScript file and include it in a HTML page
+
+3) What variables names would you create to describe parts of a rectangle and the operations you can perform on it.
+
+4) For each name, answer if it is a valid or invalid JavaScript variable:
+    a) $one
+    b) _person
+    c) 15dollars
+    d) var
+    e) VAR
+    
+5) Create two variables assign them some number and perform addition, subtraction, multiplication, and division on them. Save each result to a variable and output them using console.log.
+
+6) How many different ways can you increment a number by 1 using JavaScript operators?
+
+7) How can you modulo operator to determine if a number is odd or even?
+
+8) For each logical operation, answer whether it returns true or false
+
+var num1 = 10, num2 = 20, num3 = 30
+
+a) (num1 === num2) && (num3 < 50)
+b) (num1 === num2) || (num3 < 50)
+c) (num1 > 0) && (num2 > 0)
+d) (num1 !== 10) || (num2 !== 20)
+
+9) Write separate functions for add, subtract, multiply and divide and have them return the answer. Call these functions passing in the right arguments and console.log the return values. What happens if you pass in a string number as a argument? or a non-number?
+
+10) Create a calculator object with add, subtract, multiply, division methods.
+
+11) A list of student grades are contained in an array: [85, 52, 77, 90, 40]. How would you find the average grade?
+How can you find the lowest grade? the highest grade? Arrays have a method called .sort() that might be able to help you.
+
+12) Create a function called greeting that takes one argument called txt. Output the txt to the console using console.log. Make sure if the call doesn't supply a greeting your function will provide a default value.
+
+13) What will these return?
+
+a) true && false
+b) false && true
+c) {} || "hello"
+d) 0 && {}
+e) 100 || ""
+
+14) Write a loop that will find the sum of numbers from 1 to 100.
+
+15) Write a loop that will go through this array: [1, 2, 3, 4, 5, 6] and separate the odd and even numbers into their own arrays.
+
+16) Modify the calculator methods to check for the data types of the arguments. You can use the typeof operator to check if the arguments are Number types, e.g typeof num1 === 'number'. If it's not a number type then immediately return from the function.
+
+17) Create a Calculator constructor with all the methods from the previous calculator object. Create several instances of it and call the methods.
+
+18) How would you compare two strings for equality without worrying about case sensitivity?
