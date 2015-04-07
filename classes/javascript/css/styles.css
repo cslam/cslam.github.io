@@ -153,4 +153,7 @@ span.block-foot, span.fn-foot, span.obj-foot {
   code, .example {
     font-weight: bold;
   }
+  .js-comment, .comment {
+    font-weight: normal;
+  }
 }
