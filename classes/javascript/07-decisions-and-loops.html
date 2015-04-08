@@ -74,6 +74,27 @@
                 </p>
                 <p><code><span class="comment">// prints "number is 30 or greater" to the console.</span></code></p>
               </div>
+              <p>A conditional, or ternary, operator behaves similarly to an <code>if-else</code> statement.</p>
+              <p>The syntax for it is:</p> 
+              <div class="example">
+                <i>condition</i> ? <i>expression1</i> : <i>expression2</i>
+              </div>
+              <div class="example">
+                <p><code>var isAbleToVote;</code></p>
+                <p><span class="js-comment">// This if-else statement ... </span></p>
+                <p>
+                  <code class="block">
+                    <span class="block-head">if (age &lt; 18) {</span>
+                    <span class="block-body">isAbleToVote = false;</span>
+                    <span class="block-foot">} else {</span>
+                    <span class="block-body">isAbleToVote = true;</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p><span class="js-comment">// ... can be written using the conditional operator ... </span></p>
+                
+                <p><code>isAbleToVote = age &lt; 18 ? false : true;</code></p>
+              </div>
             </li>
             
             <li>
