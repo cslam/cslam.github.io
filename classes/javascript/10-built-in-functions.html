@@ -12,8 +12,46 @@
       <h1 class="title">JavaScript Built-in Objects</h1>      
       <ul>
         <li><p>JavaScript provides built-in objects that are in the global scope, meaning you can access them anywhere in your code.</p></li>
-        <li><p>You should be aware of <code>String</code>, <code>Date</code> and <code>Math</code>.</p></li>
+        <li><p>You should be aware of <code>setTimeout()</code>, <code>setInterval()</code>, <code>String</code>, <code>Date</code> and <code>Math</code>.</p></li>
         <li><p>For a list of the standard built-in objects, you can go to the following URL: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects</a></p></li>
+        <li>
+          <h2>Timers</h2>
+          <p>JavaScript timers allow you to run a piece of code at a later time.</p>
+          <h3>setTimeout()</h3>
+          <ul>
+            <li><p><code>setTimeout(func, delay)</code>: calls a function after a certain delay (in milliseconds).</p></li>
+            <li><p>setTimeout returns a timeoutID which you can pass as argument to <code>clearTimeout()</code> to cancel the timer before it runs.</p>
+              <div class="example">
+                <p>
+                  <code class="block">
+                    <span class="block-head">function showAlert() {</span>
+                    <span class="block-body">alert("hello world!");</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p><code>var timeoutId = setTimeout(showAlert, 1000); <span class="comment">// invoke showAlert after 1000 milliseconds or 1 second.</span></code></p>
+                <p><code>clearTimeout(timeoutId); <span class="comment">// you can stop the timer if it hasn't started yet.</span></code></p>
+              </div>
+            </li>
+          </ul>
+          <h3><code>setInterval()</code></h3>
+          <ul>
+            <li><code>setInterval(func, delay)</code>: calls a function repeatedly, with a delay between each call.</li>
+            <li><p>setInterval returns a timeoutID which you can pass as argument to <code>clearInterval()</code> to cancel the timer before the next run.</p>
+              <div class="example">
+                <p>
+                  <code class="block">
+                    <span class="block-head">function printToConsole() {</span>
+                    <span class="block-body">console.log("hello world!");</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p><code>var timeoutId = setInterval(printToConsole, 1000); <span class="comment">// invoke printToConsole after 1000 milliseconds or 1 second.</span></code></p>
+                <p><code>clearInterval(timeoutId); <span class="comment">// you can stop the timer before the next run.</span></code></p>
+              </div>
+            </li>
+          </ul>
+        </li>
         <li>
           <h2>String</h2>
           <ul>
