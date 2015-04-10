@@ -89,7 +89,8 @@
           <p><code>evt = evt || window.event;</code></p></li>
           </ol>
         </li>
-        <li><h2>Some popular events to listen for:</h2>
+        <li>
+          <h2>Some popular events to listen for:</h2>
           <ul>
             <li><p><code>window</code>'s <strong>load</strong> event: fires when the entire page has been loaded which means it waits for all images, subframes, stylesheets to be loaded.</p></li>
             <li><p>an image element's <strong>load</strong> event: fires when an image has been downloaded.</p></li>
@@ -99,6 +100,77 @@
             <li><p>the <strong>mouseover</strong> event: fires when user has moved the mouse onto an element on the page.</p></li>
             <li><p>the <strong>mouseout</strong> event: fires when user has moved the mouse off an element on the page.</p></li>
             <li><p>the <strong>submit</strong> event: fires only on the form element and when forms are submitted.</p></li>
+          </ul>
+        </li>
+        <li>
+          <h2>Event Delegation</h2>
+          <ul>
+            <li><p>Sometimes you have a bunch of HTML elements and you want to attach the same event handler to each.</p>
+            
+              <div class="example">
+                <p>HTML:</p>
+                <p>                  
+                  <code class="block">
+                    <span class="block-head">&lt;ul&gt;</span>
+                    <span class="block-body">&lt;li&gt;List Item #1&lt;/&gt;</span>
+                    <span class="block-body">&lt;li&gt;List Item #2&lt;/&gt;</span>
+                    <span class="block-body">&lt;li&gt;List Item #3&lt;/&gt;</span>
+                    <span class="block-foot">&lt;/ul&gt;</span>
+                  </code>
+                </p>
+                <br /><hr /><br />
+                <p>JavaScript:</p>
+                <p>
+                  <code class="block">
+                    <span class="block-head">function getTextFrom(element) {</span>
+                    <span class="block-body">console.log(element.textContent);</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p>
+                  <span class="js-comment">// Get all the LI elements:</span>
+                  <code>var listItems = document.getElementsByTagName('li');</code>
+                </p>
+                <p>
+                  <code class="block">
+                    <span class="block-head"><span class="comment">// Loop through each LI element and have it listen for the "click" event:</span></span>
+                    <span class="block-head">for (var i = 0, len = listItems.length; i &lt; len; i+=1) {</span>
+                    <span class="block-body">listItems[i].addEventListener('click', function  (evt) {</span>
+                    <span class="block-body-body">getTextFrom(this);</span>
+                    <span class="block-body">}, false);</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>                  
+              </div>
+              <p>Although the above will work, you are asking the browser to do quite a bit of work: grab all the LI elements, go through each one of them, and attach a event handler to each.</p>
+            </li>
+            <li><p>To lessen the browser's workload, you can attach a event handler to a common ancestor of the LI elements:</p>
+              <div class="example">
+                <p>
+                  <code class="block">
+                    <span class="block-head">function getTextFrom(element) {</span>
+                    <span class="block-body">console.log(element.textContent);</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p>
+                  <code>var list = document.querySelector('ul');</code>
+                </p>
+                <p>
+                  <code class="block">
+                    <span class="block-head"><span class="comment">// Delegate the event handling to the UL element:</span></span>
+                    <span class="block-head">list.addEventListener('click', function  (evt) {</span>
+                    <span class="block-body">var target = evt.target; <span class="comment">// Store the actual element that fired the event.</span></span>
+                    <span class="block-body"><span class="comment">// Important: we have to check to see if the actual element that fired the "click" event is an LI element, if it is, then call the getTextFrom():</span></span>
+                    <span class="block-body">if (target.nodeName.toLowerCase() === "li") {</span>
+                    <span class="block-body-body">getTextFrom(target);</span>
+                    <span class="block-body">}</span>
+                    <span class="block-foot">}, false);</span>
+                  </code>
+                </p>                  
+              </div>
+            </li>
+            
           </ul>
         </li>
       </ul>    
