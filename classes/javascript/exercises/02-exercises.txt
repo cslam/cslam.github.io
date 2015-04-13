@@ -1,0 +1,107 @@
+1)  What will the following return?
+    a) true && false
+    b) false && true
+    c) {} || "hello"
+    d) 0 && {}
+    e) 100 || ""
+
+
+2)  Create a function called greeting that defines a parameter called txt. 
+    The function should just print what's contained in txt to the console 
+    using console.log. Provide a default value for txt if the function is
+    invoked without a value for txt.
+    
+3)  A list of student grades are stored in an array: [85, 10, 7, 52, 77, 90, 40]. 
+    How would you find the average grade?
+    How can you find the lowest grade? 
+    The highest grade?
+    
+4)  Arrays have a method call .sort() that sorts an array lexicographically.
+    The .sort method can also take a "sort" function as its argument. 
+    If you pass a "sort" function, then the .sort method will use that function
+    to sort the items in its array.
+    The "sort" function has to define two parameters representing the current 
+    two items in an array that need to be compared and sorted:
+    
+    function sortNumbers(a, b) {
+      if (a < b) {
+        // if a is less than b, then a comes before b. 
+        // return -1 to let the .sort method know that.
+        return -1;
+      } else if (a > b) {
+        // if a is more than b, then a comes after b.
+        // return 1 to let the .sort method know that.
+        return 1;
+      } else {
+        // a must be equal to b.
+        // return 0 to let the .sort method know that.
+        return 0;
+      }
+    }
+    
+    Sort the array of student grades, without a sort function passed as argument.
+    Are the grades sorted numerically?
+    Sort the array again, passing the sortNumbers function and check how the
+    grades are sorted.
+    
+5)  Write a loop that will find the sum of numbers from 1 to 100. (1 + 2 + 3 + 4 + ... + 100)
+
+6)  How can you use the modulo operator to determine if a number is odd or even?
+    Write a loop that will go through this array: [1, 2, 3, 4, 5, 6] and 
+    separate the odd and even numbers into their own arrays.
+
+7)  The typeof operator takes a value and tells you what data type it is:
+
+    typeof 100; // evaluates to "number"
+    typeof true; // evaluates to "boolean"
+    typeof function () {}; // evaluates to "function"
+    typeof "Hello"; // evaluates to "string"
+    typeof null; // evaluates to "object"
+    typeof undefined; // evaluates to "undefined"
+    typeof {}; // evaluates to "object"
+
+    Modify the "add" function so that if user passes in a non-number it should return null.
+
+8)  Create a Calculator constructor with add, subtract, multiply, and divide methods defined 
+    on the .prototype object. These methods do not take any arguments.  Instead, define two
+    properties for Calculator called operand1 and operand2. You will set the operands there.
+    
+    This would be how you use the constructor:
+    var calculator = new Calculator();
+    calculator.operand1 = 100;
+    calculator.operand2 = 25;
+    var sum = calculator.add();
+    console.log(sum); // prints 125
+    var diff = calculator.subtract();
+    console.log(diff); // prints 75
+    var product = calculator.multiply(); 
+    console.log(product); // prints 2500
+    
+9)  In JavaScript you can compare two strings for equality using ===.
+    But since JavaScript is case-sensitive, the following is false:
+    "hello" === "Hello"
+    Write code to compare two strings without worrying about 
+    case-sensitivity. (As long as the letters and order of the letters are
+    the same.)
+    
+10) Create a web page that changes its background color based on whether the current 
+    system time is in AM or PM. Look for the .getHours method of Date to help you.
+    
+11) Create a web page, and using JavaScript add 10 <p> tags with each one having
+    some text content that indicate with order it is in. For example, the first
+    <p> would have text that says "This is paragraph #1". The second <p> would
+    have text that says "This is paragraph #2", etc.
+    
+    Use JavaScript to style the odd (1st, 3rd, 5th, etc) <p> tags with a background
+    color of yellow. Style the even <p> tags with background color of blue.
+
+
+
+
+
+
+
+
+
+
+

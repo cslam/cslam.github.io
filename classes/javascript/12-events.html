@@ -35,12 +35,49 @@
           </ul>
         </li>
         <li>
+          <h2>To remove an event handler for an event, use the method <code>.removeEventListener()</code></h2>
+          <p><code><i>target</i>.removeEventListener(eventName, eventHandler, useCapturing)</code></p>
+          <ul>
+            <li><p><strong>target</strong>: the target that the event handler is associated to.</p></li>
+            <li><p><strong>eventName</strong>: the name of the event that the event handler is associated to.</p></li>
+            <li><p><strong>eventHandler</strong>: pass a reference to the event handler that you want to remove.</p></li>
+            <li><p><strong>useCapturing</strong>: was the event handler using capturing (pass the value true), or bubbling (pass the value  false)?</p></li>
+          </ul>
+        </li>
+        <li>
           <h2>Event Propagation: Capturing vs Bubbling</h2>
           <p><em>Event Capturing</em> is when the event doesn't first fire at the intended target, but instead it fires at the top-most level of the DOM tree and then trickles down the target's ancestors and eventually to the intended target. So if you also added an event listener to the target's ancestors and both targets use event capturing, the ancestor will receive the event before the intended target.</p><p><strong>Older versions of IE do not support event capturing!</strong></p>
-        </li>
-        <li><p><em>Event Bubbling</em> is the popular mode of event propagation since all major browsers support it. It is the opposite of event capturing, which means the target of the event will receive the event before its ancestors do.</p></li>
-        <li><p>You can get more information on the two modes of event propagation: <a target="_blank" href="http://www.quirksmode.org/js/events_order.html#link4">http://www.quirksmode.org/js/events_order.html#link4</a></p></li>
-        
+          <p><em>Event Bubbling</em> is the popular mode of event propagation since all major browsers support it. It is the opposite of event capturing, which means the target of the event will receive the event before its ancestors do.</p>
+          
+          <div class="example">
+            <p>HTML:</p>
+            <p>                  
+              <code class="block">
+                <span class="block-head">&lt;ul&gt;</span>
+                <span class="block-body">&lt;li&gt;</span>
+                <span class="block-body-body">&lt;a href=&quot;https://www.twitter.com&quot;&gt;Twitter&lt;/a&gt;</span>
+                <span class="block-body">&lt;/li&gt;</span>
+                <span class="block-foot">&lt;/ul&gt;</span>
+              </code>
+            </p>
+            <br /><hr /><br />
+            <p>JavaScript:</p>
+            <p>
+              <span class="js-comment">// Get the &lt;a&gt; element:</span>
+              <code>var link = document.querySelector('a');</code>
+            </p>
+            <p>
+              <code class="block">
+                <span class="block-head">link.addEventListener('click', function (evt) {</span>
+                <span class="block-body"><span class="comment">// Inside the event handler, you can use the following two methods on the event object:</span></span>
+                <span class="block-body">evt.stopPropagation(); <span class="comment">// prevents further propagation of the event</span></span>
+                <span class="block-body">evt.preventDefault(); <span class="comment">// cancels the event, thus preventing the default behavior for the event on that element.</span></span>
+                <span class="block-foot">}, false);</span>
+              </code>
+            </p>                  
+          </div>        
+          <p>You can get more information on the two modes of event propagation at this URL: <a target="_blank" href="http://www.quirksmode.org/js/events_order.html#link4">http://www.quirksmode.org/js/events_order.html#link4</a></p>
+        </li>        
         <li>
           <h2>Internet Explorer 8 and older versions</h2>
           <p>To add an event handler for an event on Internet Explorer 8 and older, you'll have to use the <code>.attachEvent()</code> method.</p>
