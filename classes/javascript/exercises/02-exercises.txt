@@ -94,6 +94,9 @@
     
     Use JavaScript to style the odd (1st, 3rd, 5th, etc) <p> tags with a background
     color of yellow. Style the even <p> tags with background color of blue.
+    
+    Add click event handler for the <p> element. Use event delegation to accomplish it. 
+    You can have the event handler print the something to the console.
 
 
 
