@@ -84,10 +84,16 @@
     case-sensitivity. (As long as the letters and order of the letters are
     the same.)
     
-10) Create a web page that changes its background color based on whether the current 
+10) Create a web page and listen for the window's load and the document's 
+    DOMContentLoaded events. Observe which event fires first.
+    Now add an img tag that points to this ~32MB image:
+    http://www.nasa.gov/sites/default/files/thumbnails/image/pia19142_malhi-mojave.jpg
+    Do you see the benefit of using DOMContentLoaded over the load event?
+
+11) Create a web page that changes its background color based on whether the current 
     system time is in AM or PM. Look for the .getHours method of Date to help you.
     
-11) Create a web page, and using JavaScript add 10 <p> tags with each one having
+12) Create a web page, and using JavaScript add 10 <p> tags with each one having
     some text content that indicate with order it is in. For example, the first
     <p> would have text that says "This is paragraph #1". The second <p> would
     have text that says "This is paragraph #2", etc.
