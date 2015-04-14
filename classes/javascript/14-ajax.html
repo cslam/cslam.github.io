@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> AJAX </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">JSON and AJAX</h1>      
+      
+      <ul>        
+        <li>
+          <h2>JSON - JavaScript Object Notation</h2>
+          <ul>
+            <li><p>JSON is a data format that is used to exchange data between the server and the browser.</p></li>
+            <li><p>It is a popular format when it comes to the exchange of data between machines.</p></li>
+            <li><p>JSON is a syntax for serializing objects, arrays, numbers, strings, booleans, and null into a string represetation so you can transmit the serialized version to other machines. Once JSON data is received by the other machines, that JSON string gets deserialized into the orginal data.</p></li>
+            <li><p>An example of an object serialized to JSON format:</p>
+              <div class="example">
+                <p>Here is a JavaScript object:</p>
+                <p>
+                  <code class="block">
+                    <span class="block-head">{</span>
+                    <span class="block-body">name: "Chris",</span>
+                    <span class="block-body">skills: ["HTML", "CSS", "JavaScript"]</span>
+                    <span class="block-foot">}</span>
+                  </code>
+                </p>
+                <p>Here is the JSON representation of it. The JavaScript object is serialized (becomes regular text) with the property names from the original object wrapped in double-quoted strings.</p>
+                <p>
+                  <code>{"name":"Chris","skills":["HTML","CSS","JavaScript"]}</code>
+                </p>
+              </div>
+            </li>
+            <li>
+              <p><code>JSON</code> is a built-in object that helps you serialize and deserialize JSON-compliant data.</p>
+              <p>You serialize JSON-compliant data into a JSON string.</p>
+              <p>You de-serialize the JSON string back into a native data type.</p>
+              <p>Two JSON methods are provided for you to accomplish the serialization and deserialization:</p>
+              <div class="example">
+                <p>
+                  <code class="block">
+                    <span class="block-head">var person = {</span>
+                    <span class="block-body">name: "Chris",</span>
+                    <span class="block-body">skills: ["HTML", "CSS", "JavaScript"]</span>
+                    <span class="block-foot">};</span>
+                  </code>
+                </p>
+                <p><span class="js-comment">// JSON.stringify() takes a JSON-compliant data type and returns the JSON representation of it.</span></p>
+                <p>                  
+                  <code>var jsonData = JSON.stringify(person); <span class="comment">// returns '{"name":"Chris","skills":["HTML","CSS","JavaScript"]}'</span></code>
+                </p>
+                <p><span class="js-comment">// JSON.parse() takes JSON and returns the native data type that it represents:</span></p>
+                <p>                  
+                  <code>person = JSON.parse(jsonData); <span class="comment">// person is a JavaScript object</span></code>
+                </p>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2>AJAX - Asynchronous JavaScript and XML</h2>
+          <ul>
+            <li><p>Check out the following URL for more information on AJAX: <a href="https://developer.mozilla.org/en-US/docs/AJAX" target="_blank">https://developer.mozilla.org/en-US/docs/AJAX</a></p></li>
+            <li><p>AJAX allows you to write JavaScript code to communicate with the server-side.</p></li>
+            <li><p>You use AJAX to send and receive data from the server <strong>without needing to do a page refresh</strong>.</p></li>
+            <li><p>When requesting data using AJAX, the server usually would return data in <em>HTML</em>, <em>XML</em>, or <em>JSON</em> format.</p></li>
+            <li><p>The <strong>asynchronous</strong> in AJAX is important. Asynchronous in this case means you want to make the AJAX request without blocking the rest of your JavaScript code. Your request handler will be invoked once a response comes back.<br /> If the request was synchronous, your code would have to wait until the response comes back from the server, which means your other JavaScript code would be blocked from running during this wait.</p></li>
+            <li><p>AJAX communication is restricted by the <strong>same-origin policy</strong> (<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank">https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy</a>). This means the web page making the AJAX request must have the <strong>same</strong> protocol, hostname, and port number as the server the web page is making the request to.).</p></li>
+            <li><p>The latest version of XMLHttpRequest (Level 2) does allow you to do cross-origin communication using <strong>CORS</strong> (<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS</a>).</p></li>
+          </ul>
+        </li>
+        
+        <li>
+          <h2>Make AJAX request with a <code>XMLHttpRequest</code> object</h2>
+          <div class="example">
+            <p><span class="js-comment">// Step 1: Create a XMLHttpRequest object:</span></p>
+            <p><code>var request = new XMLHttpRequest();</code></p>
+            <p><span class="js-comment">// Step 2: Call the .open() method passing in 3 arguments:</span><br />
+              <span class="js-comment">// 1) the HTTP method, in this case 'GET', 2) the requested URL, and 3) a Boolean indicating whether the request should be asynchronous (should always be true):</span></p>
+            <p><code>request.open('GET', '/data/test.json', true);</code></p>
+            <p><span class="js-comment">// Step 3: start the request by calling .send()</span></p>
+            <p><code>request.send();</code></p>
+            <p><span class="js-comment">// Step 4: Attach a handler to the "readystatechange" event. When a server response comes back this event will fire, and the attached function will be called:</span></p>
+            <p>
+              <code class="block">
+                <span class="block-head">request.onreadystatechange = function () {</span>
+                <span class="block-body"><span class="comment">// When the request's readyState is 4 the entire server response has been received.</span></span>
+                <span class="block-body">if (request.readyState === 4) {</span>
+                <span class="block-body-body"><span class="comment">// At this point, you want to check the HTTP status of the request. A status of 200 means it's OK.</span></span>
+                <span class="block-body-body">if (request.status === 200) {</span>
+                <span class="block-body-body-body">request.responseText; <span class="comment">// .responseText will contain the server response in string format. If it's JSON, you can deserialize it with JSON.parse()</span></span>
+                <span class="block-body-body">}</span>
+                <span class="block-body">}</span>
+                <span class="block-foot">};</span>
+              </code>
+            </p>
+          </div>
+        </li>
+        
+        <li>
+          <h2>IE 6 and older versions support</h2>
+          <ul>
+            <li><p>IE6 and older versions use a different constructor for creating the AJAX request object.</p></li>
+            <li><p>Instead of using <code>new XMLHttpRequest()</code>, IE 6 uses <code>new ActiveXObject('MSXML2.XMLHTTP.3.0')</code>. We will later find that jQuery will handle these types of differences for us.</p></li>
+          </ul>
+        </li>
+        
+        <li>
+          <h2>XMLHttpRequest Level 2 (latest version)</h2>
+          <ul>
+            <li>
+              <p>Enhancements were added to the latest version of XMLHttpRequest, and the new "load" event was added. This event will fire when the server response has been received.</p>
+            </li>
+          </ul>  
+          <div class="example">
+            <p><code>var request = new XMLHttpRequest();</code></p>
+            <p><code>request.open('GET', '/data/test.json', true);</code></p>
+            <p><code>request.send();</code></p>
+            <p>
+              <code class="block">
+                <span class="block-head">request.onload = function () {</span>
+                <span class="block-body">if (this.status === 200) {</span>
+                <span class="block-body-body">this.responseText; <span class="comment">// .responseText will contain the server response in string format. If it's JSON, you can deserialize it with JSON.parse()</span></span>
+                <span class="block-body">}</span>
+                <span class="block-foot">};</span>
+              </code>
+            </p>
+          </div>
+        </li>
+        <li>
+          <h2>AJAX using jQuery</h2>
+          <p>For documentation on jQuery's support for AJAX, check out the following URL: <a href="http://api.jquery.com/category/ajax/" target="_blank">http://api.jquery.com/category/ajax/</a></p>
+          <ul>
+            <li>
+              <p>In jQuery, there are few ways you can do "AJAX-type" communcation, but under-the-hood all of these methods use the <code>jQuery.ajax()</code> method:</p>
+              <div class="example">
+                <p>
+                  <code class="block">
+                    <span class="block-head">$.ajax({</span>
+                    <span class="block-body">type: "GET", <span class="comment">// the HTTP method to use.</span></span>
+                    <span class="block-body">url: "/data/test.json", <span class="comment">// the URL you're requesting.</span></span>
+                    <span class="block-body">timeout: 2000, <span class="comment">// optional: how long to wait for response before cancel.</span></span>
+                    <span class="block-body">success: function (data) { <span class="comment">// the function to call if request succeeds.</span></span>
+                    <span class="block-body-body"><span class="comment">// other arguments are passed to this function but most of the time we are only concerned with the first one (the data argument).</span></span>
+                    <span class="block-body">},</span>
+                    <span class="block-body">error: function () { <span class="comment">// the function to call if request fails.</span></span>
+                    <span class="block-body-body"><span class="comment">// 2 to 3 arguments are passed to this function, check the jQuery ajax documentation if you want to know about them.</span></span>
+                    <span class="block-body">},</span>
+                    <span class="block-body">complete: function () { <span class="comment">// the function to call when request finishes.</span></span>
+                    <span class="block-body-body"><span class="comment">// 2 arguments are passed to this function, check the jQuery ajax documentation if you want to know about them.</span></span>
+                    <span class="block-body">}</span>
+                    <span class="block-foot">});</span>
+                  </code>
+                </p>
+              </div>
+              
+              <p>When you have to write code for multiple simultaneous asynchronous requests and keep track of when these requests are done, managing this code might be difficult especially if some requests depend on others to complete first or if you need to wait for all the requests to be done before handling the data. jQuery Deferred Object helps solves these types of problems.</p>
+              <p>For documentation on jQuery Deferred Object, check out the following URL: <a target="_blank" href="http://api.jquery.com/category/deferred-object/">http://api.jquery.com/category/deferred-object/</a></p>
+            </li>
+          </ul>
+        </li>
+      </ul>    
+    </main>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> jQuery </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav><a href="./index.html">Back Home</a></nav>
+    <main>
+      <h1 class="title">jQuery</h1>      
+      <ul>
+        <li><p>jQuery (<a href="http://jquery.com">http://jquery.com/</a>) is a JavaScript library file created by John Resig (<a href="http://ejohn.org/">http://ejohn.org/</a>) back in 2006.</p></li>
+        <li><p>Though it has many useful features, jQuery's main feature is handling the the differences in the DOM API across the major browsers, so that you don't need to worry about these discrepancies.</p></li>
+        <li><p>Many websites have incorporated the jQuery library file in their pages.  You add jQuery to your web pages the same way you would add any external JavaScript file: </p>
+          <ul>
+            <li><p>Download the file to the web server hosting your site. You can download jQuery from the jQuery download page: <a href="http://jquery.com/download/">http://jquery.com/download/</a></p></li>
+            <li><p>Use a CDN (Content Delivery Network <a href="http://en.wikipedia.org/wiki/Content_delivery_network">http://en.wikipedia.org/wiki/Content_delivery_network</a>). A list of CDNs hosting the jQuery file is provided on the jQuery download page.</p></li>
+            <li><p>Either way, you will still need to add a <code>script</code> element to your web page with the <code>src</code> attribute pointing to the location of the jQuery file:</p></li>
+          </ul>
+          <div class="example">
+            <p>Local to the web server:</p>
+            <p><code>&lt;script src="js/jquery-1.11.2.min.js"&gt;&lt;/script&gt;</code></p>
+            <p>or a URL to a CDN: </p>
+            <p><code>&lt;script src="//code.jquery.com/jquery-1.11.2.min.js"&gt;&lt;/script&gt;</code></p>
+          </div>
+        </li>
+        <li>
+          <p>You start using jQuery to work with the DOM by either:</p>
+          <ol>
+            <li><p>Create an element to add to the DOM tree, or</p></li>
+            <li><p>Find an element on the DOM tree.</p></li>
+          </ol>
+        </li>
+        <li><p>For the complete jQuery API reference, go to the following URL: <a target="_blank" href="http://api.jquery.com/">http://api.jquery.com/</a></p></li>
+        <li>
+          <h2>The <code>jQuery()</code> function</h2>
+          <ul>
+            <li><p>The <code>jQuery()</code> function can also be written as <code>$()</code></p></li>
+            <li><p>Invoking the jQuery function will return a jQuery object. You will use the methods from this object to interact with your web pages.</p></li>
+            <li><p>The jQuery function can take a string as an argument. This string can either be a CSS selector-type string that will query the DOM tree for elements that match the selector, or the string can contain HTML that jQuery will create. Either way, the returned jQuery object will contain those element which you can then interact with using jQuery methods and properties.</p></li>
+            <li><p>We will refer to the element(s) a jQuery object contains as a <strong>matched set</strong> or a <strong>jQuery selection</strong>.</p></li>
+          </ul>
+          <ol>
+            <li>
+              <p>Use the jQuery function to find elements on a web page:</p>
+              <div class="example">
+                <p><span class="js-comment">// Pass a CSS selector-type string to the function.</span></p>
+                <p><code>var $divs = $('div'); <span class="comment">// Search for all &lt;div&gt; elements on the web page. The returned jQuery object will contain all the &lt;div&gt;s found.</span></code></p>
+                <p><code>var $spans = $('div.box p span');</code></p>
+                <p><span class="js-comment">// You can now call methods on the jQuery object that will in turn work on the found element(s):</span></p>
+                <p><code>$divs.addClass('box').css({"background-color": "red", "padding": "50px"});</code></p>
+              </div>
+            </li>
+            <li>
+              <p>Use the jQuery function to create HTML element(s):</p>
+              <div class="example">
+                <p><span class="js-comment">// This creates a &lt;div&gt; element and the returned jQuery object is stored in a variable.</span></p>
+                <p><code>var $newlyCreatedDiv = $('&lt;div&gt;');</code></p>
+                <p><code>var $someNewlyCreatedHTML = $('&lt;div&gt;&lt;p&gt;hello world!&lt;/p&gt;&lt;/div&gt;');</code></p>
+                <p><span class="js-comment">// The new elements will need to be added to the DOM tree:</span></p>
+                <p><code>$newlyCreatedDiv.appendTo("article"); <span class="comment">// Insert the newly created element(s) to the end of each &lt;article&gt; element.</span></code></p>
+                <p><code>$('article').append($someNewlyCreatedHTML); <span class="comment">// Insert thew newly created element(s) to the end of each &lt;article&gt; element.</span></code></p>
+              </div>
+            </li>
+            <li>
+              <p>Use jQuery function to invoke a function (a callback) when the DOM is ready:</p>
+              <div class="example">
+                <p>
+                  <code class="block">
+                    <span class="block-head"><span class="comment">// Pass a callback function as an argument to the jQuery function.</span></span>
+                    <span class="block-head">$(function () {</span>
+                    <span class="block-body"><span class="comment">// This callback function is invoked when DOM is ready.</span></span>
+                    <span class="block-foot">});</span>
+                  </code>
+                </p>
+              </div>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <h2>jQuery methods</h2>
+          <p>Most jQuery methods returns a jQuery object, which makes <strong>method chaining</strong> possible:</p>
+          <div class="example">
+            <p><span class="js-comment">// This is a single statement broken into three lines for readability:</span></p>
+            <p>
+              <code class="block">
+                <span class="block-head">$('div') <span class="comment">// This evaluates to a jQuery object</span></span>
+                <span class="block-body">.children() <span class="comment">// This evaluates to a jQuery object</span></span>
+                <span class="block-body">.addClass('fade'); <span class="comment">// This evaluates to a jQuery object</span></span>
+              </code>
+            </p>
+          </div>
+          <p>The list of jQuery methods is extensive, and covers different areas of the DOM. Here are a few you should be familiar with if you will be using jQuery in your web pages:</p>
+          <h3>Traversing the DOM:</h3>
+          <h4>For complete list of Traversing the DOM jQuery methods, go to the following URL: <a target="_blank" href="http://api.jquery.com/category/traversing/">http://api.jquery.com/category/traversing/</a></h4>
+          <ul>
+            <li><p><code>.children([selector])</code>: Get the children of each element in the matched set. You can pass an optional selector to filter the child elements.</p></li>
+            <li><p><code>.next([selector])</code>: Get the immediately following sibling of each element in the matched set. You can pass an optional selector that each sibling has to match.</p></li>
+            <li><p><code>.prev([selector])</code>: Get the immediately preceding sibling of each element in the matched set. You can pass an optional selector that each sibling has to match.</p></li>
+          </ul>
+          <h3>Manipulating the DOM:</h3>
+          <h4>For complete list of Manipulating the DOM jQuery methods, go to the following URL: <a target="_blank" href="http://api.jquery.com/category/manipulation/">http://api.jquery.com/category/manipulation/</a></h4>
+          <ul>
+            <li><p><code>.addClass(className)</code>: Add one or more space-separated classes to be added to the class attribute for each element in the matched set.</p></li>            
+            <li><p><code>.append(content[, content])</code>: Insert <i>content</i> to the end of each element in the matched set.</p></li>
+            <li><p><code>.appendTo(target)</code>: Insert every element in the matched set to the end of the target. Target can be a selector, element, HTML string, array of elements, or jQuery object.</p></li>
+            <li><p><code>.html()</code>: Get the HTML contents (in string format) of the first element in the matched set.</p></li>
+            <li><p><code>.html(htmlString)</code>: Set the HTML contents of each elememt in the matched set with the htmlString argument.</p></li>
+            <li><p><code>.removeClass([className(s)])</code>: Removes classNames(s) from each element in matched set. If no argument is provided, removes all classNames from matched set.</p></li>
+            <li><p><code>.text()</code>: Get the combined text content of each element (and its descendants) in the matched set.</p></li>
+            <li><p><code>.text(text)</code>: Set the content of each element in the matched set to the specified text.</p></li>
+          </ul>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
