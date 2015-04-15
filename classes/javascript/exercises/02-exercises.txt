@@ -17,13 +17,13 @@
     The highest grade?
     
 4)  Arrays have a method call .sort() that sorts an array lexicographically.
-    The .sort method can also take a "sort" function as its argument. 
-    If you pass a "sort" function, then the .sort method will use that function
-    to sort the items in its array.
-    The "sort" function has to define two parameters representing the current 
-    two items in an array that need to be compared and sorted:
+    The .sort method can also take a "compare" function as its argument. 
+    If you pass a "compare" function, then the .sort method will use that function
+    to compare the items in its array.
+    The "compare" function has to define two parameters representing the current 
+    two items in an array that need to be compared:
     
-    function sortNumbers(a, b) {
+    function compareNumbers(a, b) {
       if (a < b) {
         // if a is less than b, then a comes before b. 
         // return -1 to let the .sort method know that.
@@ -39,9 +39,9 @@
       }
     }
     
-    Using the .sort method, sort the array of student grades, without a sort function passed as argument.
-    Are the grades sorted numerically?
-    Sort the array again, passing the sortNumbers function and check how the
+    Using the .sort method, sort the array of student grades, without a compare 
+    function passed as argument. Are the grades sorted numerically?
+    Sort the array again, passing the compareNumbers function and check how the
     grades are sorted.
     
 5)  Write a loop that will find the sum of numbers from 1 to 100. (1 + 2 + 3 + 4 + ... + 100)
