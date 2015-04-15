@@ -39,7 +39,7 @@
       }
     }
     
-    Sort the array of student grades, without a sort function passed as argument.
+    Using the .sort method, sort the array of student grades, without a sort function passed as argument.
     Are the grades sorted numerically?
     Sort the array again, passing the sortNumbers function and check how the
     grades are sorted.
