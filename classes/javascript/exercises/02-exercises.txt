@@ -1,9 +1,18 @@
 1)  What will the following return?
     a) true && false
     b) false && true
-    c) {} || "hello"
+    c) ({}) || "hello"
     d) 0 && {}
     e) 100 || ""
+    
+Answer: 
+    1a) false
+    1b) false
+    1c) ({}) // curly braces that begin a statement will be treated as
+              // a code block, wrap {} in parentheses to treat it as 
+              // an object instead.
+    1d) ({})
+    1e) 100
 
 
 2)  Create a function called greeting that defines a parameter called txt. 
@@ -11,10 +20,43 @@
     using console.log. Provide a default value for txt if the function is
     invoked without a value for txt.
     
+Answer:
+    function greeting(txt) {
+      txt = txt || "Hello!";
+      console.log(txt);
+    }
+    
+    greeting("Hola!");
+    greeting();
+    
 3)  A list of student grades are stored in an array: [85, 10, 7, 52, 77, 90, 40]. 
     How would you find the average grade?
     How can you find the lowest grade? 
     The highest grade?
+    
+Answer:
+    var grades = [85, 10, 7, 52, 77, 90, 40];
+    var sumOfGrades = 0;
+    var lowestGrade = grades[0];
+    var highestGrade = grades[0];
+    var averageGrade;
+    
+    for (var i = 0; i < grades.length; i+=1) {
+      var currentGrade = grades[i];
+      if (lowestGrade > currentGrade) {
+        lowestGrade = currentGrade;
+      }
+      if (highestGrade < currentGrade) {
+        highestGrade = currentGrade;
+      }
+      sumOfGrades += currentGrade;
+    }
+    
+    averageGrade = sumOfGrades / grades.length;
+    
+    console.log("average grade is " + averageGrade);
+    console.log("lowest grade is " + lowestGrade);
+    console.log("highest grade is " + highestGrade);
     
 4)  Arrays have a method call .sort() that sorts an array lexicographically.
     The .sort method can also take a "compare" function as its argument. 
@@ -83,6 +125,7 @@
     Write code to compare two strings without worrying about 
     case-sensitivity. (As long as the letters and order of the letters are
     the same.)
+    Hint: Use one of the string methods.
     
 10) Create a web page and listen for the window's load and the document's 
     DOMContentLoaded events. Observe which event fires first.
