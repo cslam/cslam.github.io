@@ -127,33 +127,3 @@ Answer:
     the same.)
     Hint: Use one of the string methods.
     
-10) Create a web page and listen for the window's load and the document's 
-    DOMContentLoaded events. Observe which event fires first.
-    Now add an img tag that points to this ~32MB image:
-    http://www.nasa.gov/sites/default/files/thumbnails/image/pia19142_malhi-mojave.jpg
-    Do you see the benefit of using DOMContentLoaded over the load event?
-
-11) Create a web page that changes its background color based on whether the current 
-    system time is in AM or PM. Look for the .getHours method of Date to help you.
-    
-12) Create a web page, and using JavaScript add 10 <p> tags with each one having
-    some text content that indicate with order it is in. For example, the first
-    <p> would have text that says "This is paragraph #1". The second <p> would
-    have text that says "This is paragraph #2", etc.
-    
-    Use JavaScript to style the odd (1st, 3rd, 5th, etc) <p> tags with a background
-    color of yellow. Style the even <p> tags with background color of blue.
-    
-    Add click event handler for the <p> element. Use event delegation to accomplish it. 
-    You can have the event handler print the something to the console.
-
-
-
-
-
-
-
-
-
-
-
