@@ -8,7 +8,7 @@
     system time is in AM or PM. Look for the .getHours method of Date to help you.
     
 3)  Create a web page, and using JavaScript add 10 <p> tags with each one having
-    some text content that indicate with order it is in. For example, the first
+    some text content that indicates what order it is in. For example, the first
     <p> would have text that says "This is paragraph #1". The second <p> would
     have text that says "This is paragraph #2", etc.
     
@@ -16,7 +16,7 @@
     color of yellow. Style the even <p> tags with background color of blue.
     
     Add click event handler for the <p> element. Use event delegation to accomplish it. 
-    You can have the event handler print the something to the console.
+    You can have the event handler print something to the console.
 
 
 
