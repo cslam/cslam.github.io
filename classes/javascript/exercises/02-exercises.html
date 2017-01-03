@@ -1,129 +1,155 @@
-1)  What will the following return?
-    a) true && false
-    b) false && true
-    c) ({}) || "hello"
-    d) 0 && {}
-    e) 100 || ""
-    
-Answer: 
-    1a) false
-    1b) false
-    1c) ({}) // curly braces that begin a statement will be treated as
-              // a code block, wrap {} in parentheses to treat it as 
-              // an object instead.
-    1d) ({})
-    1e) 100
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title> Exercise Part 2 </title>
+    <style>
+      body { font: 1em/1.5 sans-serif; padding-top: 1.5em; padding-bottom: 1.5em; }
+      li { list-style: none; }
+      pre { font-size: 1.25em; }
+    </style>
+  </head>
+  <body>
+    <p>
+      1)  What will the following return?
+    </p>
+    <ul>
+      <li>
+        a) true &amp;&amp; false
+      </li>
+      <li>
+        b) false &amp;&amp; true
+      </li>
+      <li>
+        c) 100 || ""
+      </li>
+    </ul>
 
 
-2)  Create a function called greeting that defines a parameter called txt. 
-    The function should just print what's contained in txt to the console 
-    using console.log. Provide a default value for txt if the function is
-    invoked without a value for txt.
-    
-Answer:
-    function greeting(txt) {
-      txt = txt || "Hello!";
-      console.log(txt);
-    }
-    
-    greeting("Hola!");
-    greeting();
-    
-3)  A list of student grades are stored in an array: [85, 10, 7, 52, 77, 90, 40]. 
-    How would you find the average grade?
-    How can you find the lowest grade? 
-    The highest grade?
-    
-Answer:
-    var grades = [85, 10, 7, 52, 77, 90, 40];
-    var sumOfGrades = 0;
-    var lowestGrade = grades[0];
-    var highestGrade = grades[0];
-    var averageGrade;
-    
-    for (var i = 0; i < grades.length; i+=1) {
-      var currentGrade = grades[i];
-      if (lowestGrade > currentGrade) {
-        lowestGrade = currentGrade;
+    <p>
+      2)  Create a function with the name "greeting" that requires a parameter called "txt". 
+          The function should just print what's contained in "txt" to the console 
+          using console.log. Provide a default value for "txt" if the function is
+          invoked without a value for "txt".
+    </p>
+      
+      
+    <p>
+      3)  A list of student grades are stored in an array: [85, 10, 7, 52, 77, 90, 40]. 
+          How would you find the average grade?
+          How can you find the lowest grade? 
+          The highest grade?
+    </p>
+      
+    <p>
+      4)  Arrays have a method call .sort() that sorts an array lexicographically.
+          The .sort method can also take a "compare" function as its argument. 
+          If you pass a "compare" function, then the .sort method will use that function
+          to compare the items in its array.
+          The "compare" function has to define two parameters representing the current 
+          two items in an array that need to be compared:
+    </p>
+      
+<pre>
+      function compareNumbers(a, b) {
+        if (a < b) {
+          // if a is less than b, then a comes before b. 
+          // return -1 to let the .sort method know that.
+          return -1;
+        } else if (a > b) {
+          // if a is more than b, then a comes after b.
+          // return 1 to let the .sort method know that.
+          return 1;
+        } else {
+          // a must be equal to b.
+          // return 0 to let the .sort method know that.
+          return 0;
+        }
       }
-      if (highestGrade < currentGrade) {
-        highestGrade = currentGrade;
-      }
-      sumOfGrades += currentGrade;
-    }
-    
-    averageGrade = sumOfGrades / grades.length;
-    
-    console.log("average grade is " + averageGrade);
-    console.log("lowest grade is " + lowestGrade);
-    console.log("highest grade is " + highestGrade);
-    
-4)  Arrays have a method call .sort() that sorts an array lexicographically.
-    The .sort method can also take a "compare" function as its argument. 
-    If you pass a "compare" function, then the .sort method will use that function
-    to compare the items in its array.
-    The "compare" function has to define two parameters representing the current 
-    two items in an array that need to be compared:
-    
-    function compareNumbers(a, b) {
-      if (a < b) {
-        // if a is less than b, then a comes before b. 
-        // return -1 to let the .sort method know that.
-        return -1;
-      } else if (a > b) {
-        // if a is more than b, then a comes after b.
-        // return 1 to let the .sort method know that.
-        return 1;
-      } else {
-        // a must be equal to b.
-        // return 0 to let the .sort method know that.
-        return 0;
-      }
-    }
-    
-    Using the .sort method, sort the array of student grades, without a compare 
-    function passed as argument. Are the grades sorted numerically?
-    Sort the array again, passing the compareNumbers function and check how the
-    grades are sorted.
-    
-5)  Write a loop that will find the sum of numbers from 1 to 100. (1 + 2 + 3 + 4 + ... + 100)
+</pre>
+      
+    <p>
+      Using the .sort method, sort the array of student grades, without a compare 
+      function passed as argument. Are the grades sorted numerically?
+      Sort the array again, passing the compareNumbers function and check how the
+      grades are sorted.
+    </p>
+      
+    <p>
+      5)  Write a loop that will find the sum of numbers from 25 to 50. (25 + 26 + 27 + 28 + ... + 50)
+    </p>
 
-6)  How can you use the modulo operator to determine if a number is odd or even?
-    Write a loop that will go through this array: [1, 2, 3, 4, 5, 6] and 
-    separate the odd and even numbers into their own arrays.
+    <p>
+      6)  How can you use the modulo operator to determine if a number is odd or even?
+          Write a loop that will go through this array: [1, 2, 3, 4, 5, 6] and 
+          separate the odd and even numbers into their own arrays.
+    </p>
 
-7)  The typeof operator takes a value and tells you what data type it is:
+    <p>
+      7)  The typeof operator takes a value and tells you what data type it is:
+    </p>
 
-    typeof 100; // evaluates to "number"
-    typeof true; // evaluates to "boolean"
-    typeof function () {}; // evaluates to "function"
-    typeof "Hello"; // evaluates to "string"
-    typeof null; // evaluates to "object"
-    typeof undefined; // evaluates to "undefined"
-    typeof {}; // evaluates to "object"
+    <ul>
+      <li>
+        typeof 100; // evaluates to "number"
+      </li>
+      <li>
+        typeof true; // evaluates to "boolean"
+      </li>
+      <li>
+        typeof function () {}; // evaluates to "function"
+      </li>
+      <li>
+        typeof "Hello"; // evaluates to "string"
+      </li>
+      <li>
+        typeof null; // evaluates to "object"
+      </li>
+      <li>
+        typeof undefined; // evaluates to "undefined"
+      </li>
+      <li>
+        typeof {}; // evaluates to "object"
+      </li>
+    </ul>
 
-    Modify the "add" function so that if user passes in a non-number it should return null.
+    <p>
+      Modify the "add" function so that if user passes in a non-number it should return null.
+    </p>
 
-8)  Create a Calculator constructor with add, subtract, multiply, and divide methods defined 
-    on the .prototype object. These methods do not take any arguments.  Instead, define two
-    properties for Calculator called operand1 and operand2. You will set the operands there.
-    
-    This would be how you use the constructor:
-    var calculator = new Calculator();
-    calculator.operand1 = 100;
-    calculator.operand2 = 25;
-    var sum = calculator.add();
-    console.log(sum); // prints 125
-    var diff = calculator.subtract();
-    console.log(diff); // prints 75
-    var product = calculator.multiply(); 
-    console.log(product); // prints 2500
-    
-9)  In JavaScript you can compare two strings for equality using ===.
-    But since JavaScript is case-sensitive, the following is false:
-    "hello" === "Hello"
-    Write code to compare two strings without worrying about 
-    case-sensitivity. (As long as the letters and order of the letters are
-    the same.)
-    Hint: Use one of the string methods.
-    
+    <p>
+      8)  Create a Calculator constructor with add, subtract, multiply, and divide methods defined 
+          on the .prototype object. These methods do not take any arguments.  Instead, define two
+          properties for Calculator called operand1 and operand2. You will set the operands there.
+    </p>
+      
+    <p>
+      This is how you would use the calculator:
+    </p>
+<pre>
+      var calculator = new Calculator();
+      calculator.operand1 = 100;
+      calculator.operand2 = 25;
+      var sum = calculator.add();
+      console.log(sum); // prints 125
+      var diff = calculator.subtract();
+      console.log(diff); // prints 75
+      var product = calculator.multiply(); 
+      console.log(product); // prints 2500
+</pre>  
+    <p>
+      9)  In JavaScript you can compare two strings for equality using ===.
+          But since JavaScript is case-sensitive, the following is false:
+    </p>
+<pre>
+      "hello" === "Hello"
+</pre>
+    <p>
+      Write code to compare two strings without worrying about 
+      case-sensitivity. (As long as the letters and order of the letters are
+      the same.)
+      Hint: Use one of the string methods.
+    </p>
+      
+  </body>
+</html>
