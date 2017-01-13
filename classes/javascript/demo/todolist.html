@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> Todo List demo </title>
+    <style>
+      body {
+        font: 1em/1.5 sans-serif;
+      }
+      
+      #todo-list {
+        width: 320px;
+        border: 1px solid #aaa;
+        margin: 0 auto;
+        padding: 1em;
+      }
+      
+      #todo-list input,
+      #todo-list button {
+        font-size: 1em;
+        margin: auto;
+      }
+      
+      #todo-list .inputs {
+        display: flex;
+        flex-direction: row;
+      }
+      
+      #todo-list .list li {
+        border-bottom: 1px solid #ccc;
+        padding-left: 1em;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        max-height: 100px;
+        transition: all .5s;
+      }
+      
+      #todo-list input[type="checkbox"] {
+        float: right;
+        margin-top: 5px;
+        margin-right: 10px;
+        font-size: inherit;
+      }
+      
+      #todo-list .list li.remove {
+        overflow: hidden;
+        padding-top: 0;
+        padding-bottom: 0;
+        max-height: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="todo-list">
+      <div class="inputs">
+        <input type="text" placeholder="Enter a todo item" /><button type="button">Add</button>
+      </div>
+      <ol class="list"></ol>
+    </div>
+    
+    <script>
+      function setupTodoList() {
+        var todoItems = [];
+
+        var todoListContainer = document.getElementById("todo-list");
+        var addButton = todoListContainer.querySelector("button");
+        var textField = todoListContainer.querySelector("input");
+        var todoList = todoListContainer.querySelector(".list");
+        
+        todoItems.forEach(function (todo) {
+          todoList.innerHTML += "<li>" + todo + "<input type=\"checkbox\" /></li>";
+        });
+        
+        addButton.addEventListener("click", function () {
+          todoItem = textField.value;          
+          todoItems.push(todoItem);          
+          todoList.innerHTML += "<li>" + todoItem + "<input type=\"checkbox\" /></li>";
+          textField.value = "";
+        });
+        
+        todoList.addEventListener("change", function (evt) {
+          if (evt.target.type === "checkbox" && evt.target.checked) {
+            var li = evt.target.parentNode;            
+            li.classList.add("remove"); 
+          }
+        });
+        
+        todoList.addEventListener("transitionend", function (evt) {
+          evt.target.parentNode.removeChild(evt.target);
+        });
+      }
+      
+      document.addEventListener("DOMContentLoaded", setupTodoList);      
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
