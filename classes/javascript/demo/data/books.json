@@ -1,0 +1,61 @@
+[
+  {
+    "title": "JavaScript and JQuery: Interactive Front-End Web Development",
+    "authors": ["Jon Duckett"],
+    "edition": "1st",
+    "pages": 640,
+    "publisher": "Wiley",
+    "release_date": "June 30, 2014",
+    "small_image_url": "https://images-na.ssl-images-amazon.com/images/I/41oa41LdNdL._AC_UL115_.jpg"
+  },
+
+  {
+    "title": "JavaScript: The Definitive Guide: Activate Your Web Pages (Definitive Guides)",
+    "authors": ["David Flanagan"],
+    "edition": "6th",
+    "pages": 1096,
+    "publisher": "O'Reilly Media",
+    "release_date": "May 13, 2011",
+    "small_image_url": "https://images-na.ssl-images-amazon.com/images/I/51WD-F3GobL._AC_UL115_.jpg"
+  },
+
+  {
+    "title": "Eloquent JavaScript: A Modern Introduction to Programming",
+    "authors": ["Marijn Haverbeke"],
+    "edition": "2nd",
+    "pages": 472,
+    "publisher": "No Starch Press",
+    "release_date": "December 14, 2014",
+    "small_image_url": "https://images-na.ssl-images-amazon.com/images/I/51zFTdNilAL._AC_UL115_.jpg"
+  },
+
+  {
+    "title": "Understanding ECMAScript 6: The Definitive Guide for JavaScript Developers",
+    "authors": ["Nicholas C. Zakas"],
+    "edition": "1st",
+    "pages": 352,
+    "publisher": "No Starch Press",
+    "release_date": "September 3, 2016",
+    "small_image_url": "https://images-na.ssl-images-amazon.com/images/I/51lLVf0Xq-L._AC_UL115_.jpg"
+  },
+
+  {
+    "title": "The Principles of Object-Oriented JavaScript",
+    "authors": ["Nicholas C. Zakas"],
+    "edition": "1st",
+    "pages": 120,
+    "publisher": "No Starch Press",
+    "release_date": "February 23, 2014",
+    "small_image_url": "https://images-na.ssl-images-amazon.com/images/I/51F2KSDxGwL._AC_UL115_.jpg"
+  },
+
+  {
+    "title": "Effective JavaScript: 68 Specific Ways to Harness the Power of JavaScript (Effective Software Development Series)"
+    "authors": ["David Herman"],
+    "edition": "1st",
+    "pages": 240,
+    "publisher": "Addison-Wesley Professional",
+    "release_date": "December 6, 2012",
+    "small_image_url": "https://images-na.ssl-images-amazon.com/images/I/51t8vT-IvqL._AC_UL115_.jpg"
+  }
+]
